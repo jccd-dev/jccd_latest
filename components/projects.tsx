@@ -53,7 +53,7 @@ const ProjectCard = ({
             <Button variant="default" className="rounded-full" asChild>
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="mr-1 h-4 w-4" />
-                Live Demo
+                View
               </a>
             </Button>
           )}
@@ -78,40 +78,28 @@ const ProjectCard = ({
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Vetdatalynx",
       description:
-        "A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.",
-      image: "/placeholder.svg",
-      technologies: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
-      liveUrl: "https://ecommerce-demo.com",
-      githubUrl: "https://github.com/username/ecommerce",
+        "Empowering Vet Clinics with Smart, Simple Solution. Designed to streamline clinic operations, helping to focus on providing the best care for pet patients.",
+      image: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1750580125/Screenshot_2025-06-22_161130_mglrf0.png",
+      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Javascript", "Git action", "Linux", "Git", "Livewire"],
+      liveUrl: "https://vetdatalynx.com",
     },
     {
       title: "AI Task Manager",
       description:
-        "Smart task management app that uses AI to categorize, prioritize, and suggest optimal task scheduling.",
-      image: "/placeholder.svg",
-      technologies: ["React", "Python", "TensorFlow", "FastAPI", "MongoDB"],
-      liveUrl: "https://ai-taskmanager.com",
-      githubUrl: "https://github.com/username/ai-taskmanager",
+        "A simple fun AI app message maker using OpenAI",
+      image: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1750581312/scrnli_V4oqAfbFhEVa2d_lainf7.png",
+      technologies: ["Next.js", "OpenAI", "Typescript", "Tailwind CSS"],
+      liveUrl: "https://whisper-note-kappa.vercel.app/",
+      githubUrl: "https://github.com/jccd-dev/whisper-note",
     },
     {
-      title: "Real-time Chat Application",
+      title: "AJ&P",
       description:
-        "Feature-rich chat application with real-time messaging, file sharing, and video calls.",
+        "A web-based Inventory and Order Management System for veterinary products, focused on streamlining inventory tracking and product distribution organization.",
       image: "/placeholder.svg",
-      technologies: ["React", "Socket.io", "WebRTC", "Node.js", "Redis"],
-      liveUrl: "https://chatapp-demo.com",
-      githubUrl: "https://github.com/username/chat-app",
-    },
-    {
-      title: "AI Image Generator",
-      description:
-        "An AI image generator that uses a model to generate images based on a prompt.",
-      image: "/placeholder.svg",
-      technologies: ["React", "Next.js", "Tailwind CSS", "Shadcn UI"],
-      liveUrl: "https://ai-image-generator.com",
-      githubUrl: "https://github.com/username/ai-image-generator",
+      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Javascript", "Git action", "Linux", "Git", "Livewire"],
     },
   ];
 
