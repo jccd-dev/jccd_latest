@@ -80,3 +80,13 @@ export const LinkedinLogo = (props: SVGProps<SVGSVGElement>) => (
   <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
   </svg>
 );
+
+
+export const MailEmail = (props: SVGProps<SVGSVGElement>) => (
+  <svg role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" {...props}>
+  <path fillRule="evenodd" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" clipRule="evenodd"/>
+
+
+</svg>
+
+);

@@ -35,9 +35,11 @@ const About = () => {
                   View Github
                 </Link>
               </Button>
-              <Button variant="outline" className="rounded-full">
-                <Download />
-                Download CV
+              <Button variant="outline" className="rounded-full" asChild>
+                <Link href="/johncarlodigay_resume.pdf">
+                  <Download />
+                  Download CV
+                </Link>
               </Button>
             </div>
           </div>

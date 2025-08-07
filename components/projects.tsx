@@ -98,8 +98,10 @@ const Projects = () => {
       title: "AJ&P",
       description:
         "A web-based Inventory and Order Management System for veterinary products, focused on streamlining inventory tracking and product distribution organization.",
-      image: "/placeholder.svg",
+      image: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1754572366/Screenshot_2025-08-07_13-11-51_ynxm0z.png",
       technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Javascript", "Git action", "Linux", "Git", "Livewire"],
+      liveUrl: "https://ajmp.vetdatalynx.com/user-clinic/login",
+
     },
   ];
 

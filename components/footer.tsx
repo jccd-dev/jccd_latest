@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { FacebookLogo, GithubLogo, GoogleLogo, LinkedinLogo } from "./icons";
+import { FacebookLogo, GithubLogo, LinkedinLogo, MailEmail } from "./icons";
 import {Logo} from "@/components/navbar/logo";
 
 const footerLinks = [
@@ -53,11 +53,11 @@ const Footer = () => {
             <Link href="https://www.linkedin.com/in/johncarlo24/" target="_blank">
               <LinkedinLogo className="h-5 w-5" />
             </Link>
-            <Link href="https://www.facebook.com/johncarlodigay724/" target="_blank">
+            <Link href="https://www.facebook.com/jccrwfrddgy" target="_blank">
               <FacebookLogo className="h-5 w-5" />
             </Link>
-            <Link href="mailto:johncarlodigay24@gmail.com" target="_blank">
-              <GoogleLogo className="h-5 w-5" />
+            <Link href="mailto:johncarlo.digay@outlook.com" target="_blank">
+              <MailEmail className="h-5 w-5" />
             </Link>
           </div>
         </div>

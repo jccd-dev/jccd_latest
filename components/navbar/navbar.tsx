@@ -20,7 +20,9 @@ const Navbar = () => {
             className="hidden sm:inline-flex rounded-full shadow-none"
             size="icon"
           >
-            <LinkedinLogo className="h-5! w-5!"/>
+            <Link href="https://www.linkedin.com/in/jccd-dev/">
+              <LinkedinLogo className="h-5! w-5!"/>
+            </Link>
           </Button>
           <Button
             variant="outline"

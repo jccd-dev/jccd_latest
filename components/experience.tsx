@@ -59,7 +59,8 @@ const Experience = () => {
       period: "March 2024 - Current",
       description:
         "Led the end-to-end development lifecycle of client applications, from creating front-ends to building backend infrastructure, while ensuring continuous maintenance and updates for Vetdatalynx and AJ&P",
-      technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "Tailwind", "Linux server", "AI"],
+      technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "Tailwind", "Linux server", "AI", "Git Actions (CI/CD)"],
+
     },
     {
       title: "Backend Developer | Project Head",
