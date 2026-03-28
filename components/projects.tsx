@@ -1,71 +1,83 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { GithubLogo } from "./icons";
+import { projects, type Project } from "@/lib/data/projects";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-}
-
+/**
+ * A reusable card component that displays a summary of a project,
+ * its tech stack, and action buttons. It links to a detailed case study.
+ */
 const ProjectCard = ({
+  slug,
   title,
   description,
   image,
   technologies,
-  liveUrl,
   githubUrl,
-}: ProjectCardProps) => {
+}: Project) => {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-accent transition-all hover:border-primary/50">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-accent bg-card transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden bg-accent">
         <Image
           src={image}
           alt={title}
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           fill
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+          <Link 
+            href={`/projects/${slug}`}
+            className="text-white font-medium flex items-center gap-2"
+          >
+            Read Case Study <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
 
       {/* Content */}
       <div className="flex-1 flex flex-col p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-muted-foreground mb-4">{description}</p>
+        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+          <Link href={`/projects/${slug}`}>{title}</Link>
+        </h3>
+        <p className="text-muted-foreground mb-4 line-clamp-2">{description}</p>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {technologies.map((tech) => (
-            <Badge key={tech} variant="secondary" className="rounded-full">
+          {technologies.slice(0, 4).map((tech) => (
+            <Badge key={tech} variant="secondary" className="rounded-full text-[10px] py-0">
               {tech}
             </Badge>
           ))}
+          {technologies.length > 4 && (
+            <span className="text-[10px] text-muted-foreground flex items-center">
+              +{technologies.length - 4} more
+            </span>
+          )}
         </div>
 
         {/* Actions */}
         <div className="flex gap-3 mt-auto">
-          {liveUrl && (
-            <Button variant="default" className="rounded-full" asChild>
-              <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-1 h-4 w-4" />
-                View
-              </a>
-            </Button>
-          )}
+          <Button variant="default" size="sm" className="rounded-full h-9 flex-1 group/btn" asChild>
+            <Link href={`/projects/${slug}`}>
+              View Details
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+            </Link>
+          </Button>
+          
           {githubUrl && (
             <Button
               variant="outline"
-              className="rounded-full shadow-none"
+              size="icon"
+              className="rounded-full h-9 w-9 shrink-0 shadow-none"
               asChild
             >
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                <GithubLogo className="mr-1 h-4 w-4" />
-                View Code
+                <GithubLogo className="h-4 w-4" />
+                <span className="sr-only">Github</span>
               </a>
             </Button>
           )}
@@ -76,54 +88,35 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Vetdatalynx",
-      description:
-        "Empowering Vet Clinics with Smart, Simple Solution. Designed to streamline clinic operations, helping to focus on providing the best care for pet patients.",
-      image: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1750580125/Screenshot_2025-06-22_161130_mglrf0.png",
-      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Javascript", "Git action", "Linux", "Git", "Livewire"],
-      liveUrl: "https://vetdatalynx.com",
-    },
-    {
-      title: "AI Task Manager",
-      description:
-        "A simple fun AI app message maker using OpenAI",
-      image: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1750581312/scrnli_V4oqAfbFhEVa2d_lainf7.png",
-      technologies: ["Next.js", "OpenAI", "Typescript", "Tailwind CSS"],
-      liveUrl: "https://whisper-note-kappa.vercel.app/",
-      githubUrl: "https://github.com/jccd-dev/whisper-note",
-    },
-    {
-      title: "AJ&P",
-      description:
-        "A web-based Inventory and Order Management System for veterinary products, focused on streamlining inventory tracking and product distribution organization.",
-      image: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1754572366/Screenshot_2025-08-07_13-11-51_ynxm0z.png",
-      technologies: ["PHP", "Laravel", "MySQL", "Tailwind CSS", "Javascript", "Git action", "Linux", "Git", "Livewire"],
-      liveUrl: "https://ajmp.vetdatalynx.com/user-clinic/login",
-
-    },
-  ];
-
   return (
-    <section id="projects" className="relative py-20 px-6">
+    <section id="projects" className="relative py-24 px-6">
       <div className="max-w-screen-md mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4">
             Projects
           </Badge>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
             Featured Work
           </h2>
-          <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">
-            Showcasing some of my best projects and technical achievements
+          <p className="text-muted-foreground mt-2 sm:mt-4 text-lg max-w-lg mx-auto">
+            Showcasing some of my best projects and technical achievements across various domains.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} {...project} />
           ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground mb-6">Want to see more of my work?</p>
+          <Button variant="outline" className="rounded-full" asChild>
+            <Link href="https://github.com/jccd-dev" target="_blank">
+              <GithubLogo className="mr-2 h-5 w-5" />
+              Check my GitHub
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
