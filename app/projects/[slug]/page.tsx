@@ -6,6 +6,7 @@ import Link from "next/link";
 import { projectDetails } from "@/lib/data/projectDetails";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -28,7 +29,7 @@ export default function ProjectPage() {
         { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out" },
       );
 
-      gsap.utils.toArray(".reveal-image").forEach((elem: any) => {
+      gsap.utils.toArray<HTMLElement>(".reveal-image").forEach((elem) => {
         gsap.fromTo(
           elem,
           { y: 100, opacity: 0 },
@@ -145,8 +146,10 @@ export default function ProjectPage() {
                 key={idx}
                 className={`reveal-image relative overflow-hidden bg-accent/30 rounded-xs flex items-center justify-center hover:bg-accent/40 transition-colors duration-500 ${spanClasses}`}
               >
-                <img
+                <Image
                   src={img}
+                  width={500}
+                  height={500}
                   alt={`${project.title} presentation ${idx + 1}`}
                   className="w-full h-full object-cover rounded-xs shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-transform duration-700 hover:scale-[1.02]"
                 />

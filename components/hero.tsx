@@ -125,16 +125,16 @@ const Hero = () => {
                   className="rounded-xs text-base bg-foreground/10"
                 >
                   <ArrowDown />
-                  Resume
+                  View All Work
                 </Button>
               </motion.div>
             </div>
           </div>
 
           {/* Right Column: Featured Cards */}
-          <div className="flex flex-col justify-end items-end">
+          <div className="flex flex-col justify-end items-end mt-4 md:mt-0">
             <motion.div
-              className="flex gap-4 p-4 dark:bg-accent/20 bg-foreground/5 rounded-sm border dark:border-white/10 border-black/5 backdrop-blur-sm max-w-lg w-full h-auto transition-all duration-300 hover:bg-foreground/[0.08] dark:hover:bg-accent/30 group cursor-pointer"
+              className="flex gap-4 p-3 dark:bg-accent/20 bg-foreground/5 rounded-sm border dark:border-white/10 border-black/5 backdrop-blur-sm sm:max-w-sm w-full h-auto transition-all duration-300 hover:bg-foreground/[0.08] dark:hover:bg-accent/30 group cursor-pointer"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.01 }}

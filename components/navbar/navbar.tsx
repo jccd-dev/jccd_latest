@@ -57,7 +57,7 @@ export default function Navigation() {
               </Link>
 
               {/* Desktop Navigation - Hidden on mobile */}
-              <div className="hidden lg:flex items-center gap-8 ml-2">
+              <div className="hidden lg:flex items-center gap-8 ml-2 font-pp-neue-montreal">
                 <Link
                   href="#experience"
                   className="dark:text-white text-foreground/80 text-md hover:opacity-70 transition-opacity duration-200 font-medium"
@@ -139,7 +139,7 @@ export default function Navigation() {
                     href="#experience"
                     onClick={closeMenu}
                     variants={itemVariants}
-                    className="py-4 dark:text-white text-dark text-xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200 border-b dark:border-white/5 border-dark/5"
+                    className="py-4 dark:text-white text-dark text-xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200 border-b dark:border-white/5 border-dark/5 font-pp-neue-montreal"
                   >
                     Experience
                   </motion.a>
@@ -147,7 +147,7 @@ export default function Navigation() {
                     href="#projects"
                     onClick={closeMenu}
                     variants={itemVariants}
-                    className="py-4 dark:text-white text-dark text-xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200 border-b dark:border-white/5 border-dark/5"
+                    className="py-4 dark:text-white text-dark text-xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200 border-b dark:border-white/5 border-dark/5 font-pp-neue-montreal"
                   >
                     Projects
                   </motion.a>
@@ -155,7 +155,7 @@ export default function Navigation() {
                     href="#about"
                     onClick={closeMenu}
                     variants={itemVariants}
-                    className="py-4 dark:text-white text-dark text-xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200 border-b dark:border-white/5 border-dark/5"
+                    className="py-4 dark:text-white text-dark text-xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200 border-b dark:border-white/5 border-dark/5 font-pp-neue-montreal"
                   >
                     About
                   </motion.a>
