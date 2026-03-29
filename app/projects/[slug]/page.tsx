@@ -143,12 +143,12 @@ export default function ProjectPage() {
             return (
               <div
                 key={idx}
-                className={`reveal-image relative overflow-hidden bg-accent/30 rounded-3xl flex items-center justify-center hover:bg-accent/40 transition-colors duration-500 ${spanClasses}`}
+                className={`reveal-image relative overflow-hidden bg-accent/30 rounded-xs flex items-center justify-center hover:bg-accent/40 transition-colors duration-500 ${spanClasses}`}
               >
                 <img
                   src={img}
                   alt={`${project.title} presentation ${idx + 1}`}
-                  className="w-full h-full object-cover rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-transform duration-700 hover:scale-[1.02]"
+                  className="w-full h-full object-cover rounded-xs shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-transform duration-700 hover:scale-[1.02]"
                 />
               </div>
             );

@@ -19,7 +19,7 @@ const ProjectCard = ({
   githubUrl,
 }: Project) => {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-accent bg-card transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
+    <div className="group relative flex flex-col overflow-hidden rounded-xs border border-accent bg-card transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden bg-accent">
         <Image
@@ -48,7 +48,7 @@ const ProjectCard = ({
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-6">
           {technologies.slice(0, 4).map((tech) => (
-            <Badge key={tech} variant="secondary" className="rounded-full text-[10px] py-0">
+            <Badge key={tech} variant="secondary" className="rounded-xs text-[10px] py-0">
               {tech}
             </Badge>
           ))}
@@ -61,7 +61,7 @@ const ProjectCard = ({
 
         {/* Actions */}
         <div className="flex gap-3 mt-auto">
-          <Button variant="default" size="sm" className="rounded-full h-9 flex-1 group/btn" asChild>
+          <Button variant="default" size="sm" className="rounded-xs h-9 flex-1 group/btn" asChild>
             <Link href={`/projects/${slug}`}>
               View Details
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -72,7 +72,7 @@ const ProjectCard = ({
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full h-9 w-9 shrink-0 shadow-none"
+              className="rounded-xs h-9 w-9 shrink-0 shadow-none"
               asChild
             >
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
@@ -111,7 +111,7 @@ const Projects = () => {
         
         <div className="mt-16 text-center">
           <p className="text-muted-foreground mb-6">Want to see more of my work?</p>
-          <Button variant="outline" className="rounded-full" asChild>
+          <Button variant="outline" className="rounded-xs" asChild>
             <Link href="https://github.com/jccd-dev" target="_blank">
               <GithubLogo className="mr-2 h-5 w-5" />
               Check my GitHub

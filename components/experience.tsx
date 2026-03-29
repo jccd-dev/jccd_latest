@@ -20,13 +20,13 @@ const ExperienceItem = ({
     <div className="relative pl-8 not-last:pb-12">
       {/* Timeline line */}
       <div className="absolute left-0 top-2.5 h-full w-[2px] bg-muted group-first:h-[calc(100%-24px)] group-first:top-6">
-        <div className="absolute h-3 w-3 -left-[5px] top-0 rounded-full border-2 border-primary bg-background" />
+        <div className="absolute h-3 w-3 -left-[5px] top-0 rounded-xs border-2 border-primary bg-background" />
       </div>
 
       {/* Content */}
       <div className="space-y-3">
         <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 size-9 bg-accent rounded-full flex items-center justify-center">
+          <div className="flex-shrink-0 size-9 bg-accent rounded-xs flex items-center justify-center">
             <Building2 className="size-5 text-muted-foreground" />
           </div>
           <span className="text-lg font-semibold">{company}</span>
@@ -41,7 +41,7 @@ const ExperienceItem = ({
         <p className="text-muted-foreground">{description}</p>
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech) => (
-            <Badge key={tech} variant="secondary" className="rounded-full">
+            <Badge key={tech} variant="secondary" className="rounded-xs">
               {tech}
             </Badge>
           ))}

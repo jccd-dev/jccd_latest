@@ -4,6 +4,13 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import localFont from "next/font/local";
+
+const ppNeueMontreal = localFont({
+  src: "../public/fonts/PPNeueMontreal.woff",
+  variable: "--font-pp-neue-montreal",
+  display: "swap",
+});
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -20,8 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.className} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.className} ${ppNeueMontreal.className} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

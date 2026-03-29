@@ -7,6 +7,7 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pp-neue-montreal: var(--font-pp-neue-montreal);
 }
 
 :root {
@@ -132,7 +133,7 @@
   .glass {
     @apply bg-background/50 backdrop-blur-md border border-white/10;
   }
-  
+
   .glass-dark {
     @apply bg-slate-950/50 backdrop-blur-md border border-slate-800/50;
   }
@@ -148,4 +149,3 @@
     transform: scale(0.95);
   }
 }
-

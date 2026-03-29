@@ -17,7 +17,7 @@ export const NavigationSheet = () => {
       </SheetTrigger>
       <SheetContent 
         side="top" 
-        className="w-full max-w-[400px] mx-auto top-6 rounded-[2rem] bg-[#1a1a1a] border border-white/10 p-0 overflow-hidden"
+        className="w-full max-w-[400px] mx-auto top-6 rounded-xs bg-[#1a1a1a] border border-white/10 p-0 overflow-hidden"
       >
         <div className="p-8">
           <div className="flex items-center justify-between mb-12">
@@ -35,7 +35,7 @@ export const NavigationSheet = () => {
 
           <div className="mt-12 flex items-center justify-between gap-4">
             <Button
-              className="flex-1 rounded-xl bg-white text-black hover:bg-gray-200 h-14 font-medium text-base transition-colors justify-start px-6"
+              className="flex-1 rounded-xs bg-white text-black hover:bg-gray-200 h-14 font-medium text-base transition-colors justify-start px-6"
               asChild
             >
               <Link href="#contact" className="flex items-center gap-2">
@@ -44,7 +44,7 @@ export const NavigationSheet = () => {
               </Link>
             </Button>
             
-            <div className="h-14 w-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40">
+            <div className="h-14 w-14 rounded-xs bg-white/5 border border-white/10 flex items-center justify-center text-white/40">
               <Lock className="h-5 w-5" />
             </div>
           </div>
