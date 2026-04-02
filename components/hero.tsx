@@ -59,7 +59,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 lg:px-0 flex-1 flex flex-col">
+      <div className="container relative z-10 mx-auto px-4 lg:px-6 flex-1 flex flex-col">
         <div className="grid lg:grid-cols-2 grid-cols-1 w-full flex-1 gap-4">
           {/* Left Column: Headline and Bottom Info */}
           <div className="flex flex-col lg:justify-between gap-4">
@@ -144,6 +144,7 @@ const Hero = () => {
                 <div className="overflow-hidden rounded-sm">
                   <Image
                     src="https://res.cloudinary.com/df3ak7hgk/image/upload/v1774689377/Screenshot_2026-03-28_171524_ebxyfg.png"
+                    loading="eager"
                     alt="Hero"
                     width={500}
                     height={500}

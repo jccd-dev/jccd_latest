@@ -6,7 +6,7 @@ const About = () => {
   return (
     <section id="about" className="mt-8 w-full">
       <div className="h-32" />
-      <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-8">
+      <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-8">
         <div className="">
           <h2 className="text-4xl xl:text-5xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty max-w-7xl">
             I{" "}
@@ -29,6 +29,7 @@ const About = () => {
                 width={500}
                 height={0}
                 className="w-full h-auto object-cover rounded-sm"
+                loading="eager"
               />
             </div>
             <div className="w-full lg:w-1/2 font-pp-neue-montreal text-base  tracking-tight leading-5 text-wrap flex flex-col gap-4 text-muted-foreground">
