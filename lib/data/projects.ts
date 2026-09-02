@@ -15,7 +15,8 @@ export const projects: Project[] = [
   {
     slug: "vetdatalynx",
     title: "Vetdatalynx",
-    description: "Empowering Vet Clinics with Smart, Simple Solution.",
+    description:
+      "A clinic operations platform for patient records, appointments, inventory, and billing.",
     fullDescription:
       "Designed to streamline clinic operations, helping to focus on providing the best care for pet patients. This comprehensive system handles patient records, appointment scheduling, and inventory management with ease.",
     image:
@@ -41,8 +42,9 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-task-manager",
-    title: "AI Task Manager",
-    description: "A simple fun AI app message maker using OpenAI",
+    title: "Whisper Note",
+    description:
+      "An AI message builder that turns rough notes and voice input into clear, structured messages.",
     fullDescription:
       "Whisper Note is an AI-powered message builder that helps users craft perfect messages from simple voice notes or rough text. It utilizes OpenAI's cutting-edge models to transform disorganized thoughts into structured, professional communications.",
     image:
@@ -68,7 +70,7 @@ export const projects: Project[] = [
     slug: "ajmp-inventory",
     title: "AJ&P",
     description:
-      "A web-based Inventory and Order Management System for veterinary products.",
+      "An inventory and order management system for distributing veterinary products across clinics.",
     fullDescription:
       "A specialized platform for managing veterinary product distribution. Focuses on organization, streamlining inventory tracking, and facilitating product distribution efficiency across multiple clinics.",
     image:

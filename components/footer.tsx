@@ -139,7 +139,7 @@ const Footer = () => {
               className="w-full h-auto fill-foreground opacity-[0.08] dark:opacity-[0.12] transition-opacity duration-700 hover:opacity-100 cursor-help"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g stroke-linecap="round" fill-rule="evenodd">
+              <g strokeLinecap="round" fillRule="evenodd">
                 <path
                   d="M 66.036 75.907 C 66.036 94.357 58.836 111.757 33.036 111.757 C 7.236 111.757 0.036 94.357 0.036 75.907 L 0.036 70.957 L 16.986 70.957 L 16.986 75.907 C 16.986 87.907 19.086 96.457 32.586 96.457 C 45.936 96.457 48.336 87.907 48.336 75.907 L 48.336 2.257 L 66.036 2.257 L 66.036 75.907 Z"
                   id="0"

@@ -1,0 +1,264 @@
+.staggered-menu-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.staggered-menu-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 80px;
+}
+
+.sm-logo,
+.sm-toggle {
+  color: var(--foreground);
+  pointer-events: auto;
+  transition: color 0s 380ms;
+}
+
+.staggered-menu-wrapper[data-open] .sm-logo,
+.staggered-menu-wrapper[data-open] .sm-toggle {
+  color: #fff;
+  transition-delay: 0s;
+}
+
+.sm-logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.sm-toggle {
+  display: inline-flex;
+  min-width: 76px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.sm-logo:focus-visible,
+.sm-toggle:focus-visible,
+.staggered-menu-panel a:focus-visible {
+  border-radius: 2px;
+  outline: 3px solid currentColor;
+  outline-offset: 5px;
+}
+
+.sm-toggle-text-wrap {
+  display: block;
+  height: 1em;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.sm-toggle-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sm-toggle-text > span {
+  height: 1em;
+  line-height: 1;
+}
+
+.sm-icon {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  will-change: transform;
+}
+
+.sm-icon > span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+
+.sm-icon > span:last-child {
+  transform: rotate(90deg);
+}
+
+.sm-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 0;
+  background: rgb(0 0 0 / 0.36);
+  pointer-events: auto;
+  cursor: default;
+}
+
+.sm-prelayers,
+.staggered-menu-panel {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: clamp(28rem, 45vw, 42.5rem);
+}
+
+.sm-prelayers {
+  z-index: 5;
+  width: calc(clamp(28rem, 45vw, 42.5rem) + 2rem);
+  pointer-events: none;
+}
+
+.sm-prelayer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.sm-prelayer-paper {
+  background: #fefefe;
+}
+
+.sm-prelayer-graphite {
+  left: 1rem;
+  background: #5f625f;
+}
+
+.staggered-menu-panel {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  padding: 8.5rem 3rem 2.625rem;
+  background: #000;
+  color: #fefefe;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.sm-panel-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sm-panel-list li {
+  overflow: hidden;
+}
+
+.sm-panel-list a {
+  display: block;
+  color: inherit;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(3.35rem, 5.2vw, 4.875rem);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+  text-decoration: none;
+}
+
+.sm-panel-item-label {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  transition: color 180ms ease;
+  will-change: transform;
+}
+
+.sm-panel-list:has(a:hover) a:not(:hover) .sm-panel-item-label {
+  color: #696d69;
+}
+
+.sm-panel-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  font-family: var(--font-pp-neue-montreal), sans-serif;
+  font-size: 0.875rem;
+}
+
+.sm-contact {
+  color: #fefefe;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.3125rem;
+  white-space: nowrap;
+}
+
+.sm-panel-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sm-panel-links > a {
+  color: #a3a3a3;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.sm-panel-links > a:hover {
+  color: #fefefe;
+}
+
+.sm-theme button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #303030;
+  background: transparent !important;
+  color: #fefefe !important;
+}
+
+@media (max-width: 768px) {
+  .staggered-menu-header {
+    height: 72px;
+  }
+
+  .sm-prelayers,
+  .staggered-menu-panel {
+    width: 100%;
+  }
+
+  .sm-prelayers {
+    width: calc(100% + 1rem);
+  }
+
+  .sm-prelayer-graphite {
+    left: 0.5rem;
+  }
+
+  .staggered-menu-panel {
+    padding: 7.5rem 1.5rem 1.5rem;
+  }
+
+  .sm-panel-list a {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+  }
+
+  .sm-panel-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sm-logo,
+  .sm-toggle,
+  .sm-panel-item-label,
+  .sm-panel-links > a {
+    transition: none;
+  }
+}

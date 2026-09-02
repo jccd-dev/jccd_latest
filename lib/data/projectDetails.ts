@@ -22,8 +22,8 @@ export const projectDetails: ProjectDetail[] = [
   },
   {
     slug: "ai-task-manager",
-    title: "AI Task Manager",
-    subtitle: "A simple fun AI app message maker using OpenAI",
+    title: "Whisper Note",
+    subtitle: "AI-assisted messages from rough notes and voice input.",
     services: ["AI Integration", "Frontend Development"],
     overview:
       "Whisper Note is an AI-powered message builder that helps users craft perfect messages from simple voice notes or rough text. It utilizes OpenAI's cutting-edge models to transform disorganized thoughts into structured, professional communications.",
