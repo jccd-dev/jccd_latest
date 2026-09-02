@@ -1,14 +1,25 @@
+"use client";
+
 import { Download } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const About = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="about" className="mt-8 w-full">
-      <div className="h-32" />
-      <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-8">
-        <div className="">
-          <h2 className="text-4xl xl:text-5xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty max-w-7xl">
+    <div className="h-32" />
+    <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-8">
+      <div className="">
+          <motion.h2
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl xl:text-5xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty max-w-7xl"
+          >
             I{" "}
             <span className="text-muted-foreground">enjoy building things</span>{" "}
             that don&apos;t just work—but actually matter to the people using
@@ -18,9 +29,15 @@ const About = () => {
             </span>{" "}
             is what keeps me{" "}
             <span className="text-muted-foreground">excited.</span>
-          </h2>
+          </motion.h2>
         </div>
-        <div className="grid lg:grid-cols-12 grid-cols-1 md:grid-cols-6 gap-6">
+        <motion.div
+          className="grid lg:grid-cols-12 grid-cols-1 md:grid-cols-6 gap-6"
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="lg:col-start-7 md:col-start-1 flex flex-col md:flex-row gap-6 md:col-span-6">
             <div className="w-full lg:w-1/2">
               <Image
@@ -51,7 +68,7 @@ const About = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className="h-10"></div>
     </section>

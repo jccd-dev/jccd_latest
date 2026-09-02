@@ -122,6 +122,7 @@
 .sm-prelayer {
   position: absolute;
   inset: 0;
+  transform: translate3d(100%, 0, 0);
   will-change: transform;
 }
 
@@ -144,6 +145,7 @@
   background: #000;
   color: #fefefe;
   pointer-events: auto;
+  transform: translate3d(100%, 0, 0);
   will-change: transform;
 }
 
@@ -177,10 +179,6 @@
   will-change: transform;
 }
 
-.sm-panel-list:has(a:hover) a:not(:hover) .sm-panel-item-label {
-  color: #696d69;
-}
-
 .sm-panel-footer {
   display: flex;
   align-items: flex-end;
@@ -210,8 +208,14 @@
   transition: color 180ms ease;
 }
 
-.sm-panel-links > a:hover {
-  color: #fefefe;
+@media (hover: hover) and (pointer: fine) {
+  .sm-panel-list:has(a:hover) a:not(:hover) .sm-panel-item-label {
+    color: #696d69;
+  }
+
+  .sm-panel-links > a:hover {
+    color: #fefefe;
+  }
 }
 
 .sm-theme button {

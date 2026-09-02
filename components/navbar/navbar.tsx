@@ -26,7 +26,9 @@ export default function StaggeredMenu() {
   useLayoutEffect(() => {
     const context = gsap.context(() => {
       const layers = layersRef.current?.querySelectorAll(".sm-prelayer");
-      gsap.set([panelRef.current, ...(layers ?? [])], { xPercent: 100 });
+      gsap.set([panelRef.current, ...(layers ?? [])], {
+        transform: "translate3d(100%, 0, 0)",
+      });
     }, wrapperRef);
 
     return () => context.revert();
@@ -52,29 +54,29 @@ export default function StaggeredMenu() {
       })
       .to(labels, {
         yPercent: 120,
-        duration: reducedMotion ? 0 : 0.2,
-        ease: "power2.in",
+        duration: reducedMotion ? 0 : 0.14,
+        ease: "power2.out",
       })
       .to(
         [panel, ...layers],
         {
-          xPercent: 100,
-          duration: reducedMotion ? 0 : 0.38,
-          ease: "power3.in",
-          stagger: reducedMotion ? 0 : 0.04,
+          transform: "translate3d(100%, 0, 0)",
+          duration: reducedMotion ? 0 : 0.24,
+          ease: "power3.out",
+          stagger: reducedMotion ? 0 : 0.03,
         },
         0,
       );
 
     gsap.to(iconRef.current, {
       rotate: 0,
-      duration: reducedMotion ? 0 : 0.35,
-      ease: "power3.inOut",
+      duration: reducedMotion ? 0 : 0.2,
+      ease: "power3.out",
     });
     gsap.to(textRef.current, {
       yPercent: 0,
-      duration: reducedMotion ? 0 : 0.35,
-      ease: "power3.inOut",
+      duration: reducedMotion ? 0 : 0.2,
+      ease: "power3.out",
     });
   }, []);
 
@@ -99,41 +101,41 @@ export default function StaggeredMenu() {
         onComplete: () => panel?.querySelector<HTMLAnchorElement>("a")?.focus(),
       })
       .to([...layers, panel], {
-        xPercent: 0,
-        duration: reducedMotion ? 0 : 0.58,
+        transform: "translate3d(0%, 0, 0)",
+        duration: reducedMotion ? 0 : 0.28,
         ease: "power4.out",
-        stagger: reducedMotion ? 0 : 0.07,
+        stagger: reducedMotion ? 0 : 0.04,
       })
       .to(
         labels,
         {
           yPercent: 0,
-          duration: reducedMotion ? 0 : 0.7,
+          duration: reducedMotion ? 0 : 0.26,
           ease: "power4.out",
-          stagger: reducedMotion ? 0 : 0.07,
+          stagger: reducedMotion ? 0 : 0.04,
         },
-        reducedMotion ? 0 : 0.18,
+        reducedMotion ? 0 : 0.08,
       )
       .to(
         details,
         {
           opacity: 1,
           y: 0,
-          duration: reducedMotion ? 0 : 0.4,
+          duration: reducedMotion ? 0 : 0.22,
           ease: "power2.out",
-          stagger: reducedMotion ? 0 : 0.05,
+          stagger: reducedMotion ? 0 : 0.04,
         },
-        reducedMotion ? 0 : 0.35,
+        reducedMotion ? 0 : 0.12,
       );
 
     gsap.to(iconRef.current, {
       rotate: 225,
-      duration: reducedMotion ? 0 : 0.8,
+      duration: reducedMotion ? 0 : 0.24,
       ease: "power4.out",
     });
     gsap.to(textRef.current, {
       yPercent: -50,
-      duration: reducedMotion ? 0 : 0.6,
+      duration: reducedMotion ? 0 : 0.2,
       ease: "power4.out",
     });
   }, []);

@@ -148,4 +148,47 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
+  .project-marquee-track {
+    display: flex;
+    width: max-content;
+    animation-name: project-marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .project-marquee-group {
+    display: flex;
+    flex: none;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@keyframes project-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-marquee:hover .project-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+.project-marquee:focus-visible .project-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-marquee {
+    overflow-x: auto;
+  }
+
+  .project-marquee-track {
+    animation: none;
+    transform: none;
+  }
 }

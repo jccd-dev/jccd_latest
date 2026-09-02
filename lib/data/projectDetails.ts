@@ -4,7 +4,7 @@ export interface ProjectDetail {
   subtitle: string;
   services: string[];
   overview: string;
-  images: string[];
+  images: [string, ...string[]];
 }
 
 export const projectDetails: ProjectDetail[] = [
