@@ -1,7 +1,10 @@
 "use client";
 
-import { projects, type Project } from "@/lib/data/projects";
-import { projectDetails } from "@/lib/data/projectDetails";
+import {
+  getProjectTechnologies,
+  projects,
+  type Project,
+} from "@/lib/data/projects";
 import { CornerDownRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
@@ -10,7 +13,8 @@ import Link from "next/link";
 const ProjectDossier = ({ project, index }: { project: Project; index: number }) => {
   const reduceMotion = useReducedMotion();
   const href = `/projects/${project.slug}`;
-  const images = projectDetails.find(({ slug }) => slug === project.slug)?.images ?? [project.image];
+  const images = project.screenshots.map(({ src }) => src);
+  const technologies = getProjectTechnologies(project);
   const marqueeImages = Array.from(
     { length: Math.max(3, images.length) },
     (_, imageIndex) => images[imageIndex % images.length],
@@ -40,7 +44,7 @@ const ProjectDossier = ({ project, index }: { project: Project; index: number })
           </h3>
 
           <ul aria-label="Technologies" className="mt-7 flex max-w-2xl flex-wrap gap-2">
-            {project.technologies.slice(0, 5).map((technology) => (
+            {technologies.slice(0, 5).map((technology) => (
               <li
                 key={technology}
                 className="rounded-xs bg-muted px-3 py-1.5 font-pp-neue-montreal text-sm text-muted-foreground"
@@ -51,7 +55,7 @@ const ProjectDossier = ({ project, index }: { project: Project; index: number })
           </ul>
 
           <p className="mt-7 max-w-xl font-pp-neue-montreal text-base leading-6 text-foreground/85 sm:text-lg sm:leading-7">
-            {project.description}
+            {project.shortDescription}
           </p>
         </div>
 

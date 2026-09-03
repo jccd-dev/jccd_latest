@@ -54,14 +54,14 @@ export default function StaggeredMenu() {
       })
       .to(labels, {
         yPercent: 120,
-        duration: reducedMotion ? 0 : 0.14,
+        duration: reducedMotion ? 0 : 0.16,
         ease: "power2.out",
       })
       .to(
         [panel, ...layers],
         {
           transform: "translate3d(100%, 0, 0)",
-          duration: reducedMotion ? 0 : 0.24,
+          duration: reducedMotion ? 0 : 0.28,
           ease: "power3.out",
           stagger: reducedMotion ? 0 : 0.03,
         },
@@ -102,41 +102,41 @@ export default function StaggeredMenu() {
       })
       .to([...layers, panel], {
         transform: "translate3d(0%, 0, 0)",
-        duration: reducedMotion ? 0 : 0.28,
-        ease: "power4.out",
-        stagger: reducedMotion ? 0 : 0.04,
+        duration: reducedMotion ? 0 : 0.34,
+        ease: "power3.out",
+        stagger: reducedMotion ? 0 : 0.05,
       })
       .to(
         labels,
         {
           yPercent: 0,
-          duration: reducedMotion ? 0 : 0.26,
-          ease: "power4.out",
-          stagger: reducedMotion ? 0 : 0.04,
+          duration: reducedMotion ? 0 : 0.28,
+          ease: "power3.out",
+          stagger: reducedMotion ? 0 : 0.05,
         },
-        reducedMotion ? 0 : 0.08,
+        reducedMotion ? 0 : 0.1,
       )
       .to(
         details,
         {
           opacity: 1,
           y: 0,
-          duration: reducedMotion ? 0 : 0.22,
+          duration: reducedMotion ? 0 : 0.24,
           ease: "power2.out",
-          stagger: reducedMotion ? 0 : 0.04,
+          stagger: reducedMotion ? 0 : 0.05,
         },
-        reducedMotion ? 0 : 0.12,
+        reducedMotion ? 0 : 0.15,
       );
 
     gsap.to(iconRef.current, {
       rotate: 225,
-      duration: reducedMotion ? 0 : 0.24,
-      ease: "power4.out",
+      duration: reducedMotion ? 0 : 0.28,
+      ease: "power3.out",
     });
     gsap.to(textRef.current, {
       yPercent: -50,
-      duration: reducedMotion ? 0 : 0.2,
-      ease: "power4.out",
+      duration: reducedMotion ? 0 : 0.24,
+      ease: "power3.out",
     });
   }, []);
 
