@@ -151,7 +151,7 @@ const Projects = () => {
             Selected work
           </h2>
           <motion.p
-            className="mt-5 max-w-xl font-pp-neue-montreal text-base leading-6 text-muted-foreground sm:text-lg"
+            className="mt-5 max-w-xl font-pp-neue-montreal text-base leading-5 text-muted-foreground sm:text-lg"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.18 }}

@@ -4,9 +4,19 @@ import { eaglesNexus } from "./eagles-nexus";
 import { vetdatalynx } from "./vetdatalynx";
 import type { Project } from "./types";
 
-export type { Project, ProjectScreenshot, ProjectStatus, ProjectText } from "./types";
+export type {
+  Project,
+  ProjectScreenshot,
+  ProjectStatus,
+  ProjectText,
+} from "./types";
 
-export const projects: readonly Project[] = [vetdatalynx, critterHub, eaglesNexus, aparador];
+export const projects: readonly Project[] = [
+  eaglesNexus,
+  critterHub,
+  aparador,
+  vetdatalynx,
+];
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);

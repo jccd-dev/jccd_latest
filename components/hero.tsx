@@ -3,10 +3,11 @@
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowDown, CornerDownRight } from "lucide-react";
+import { ArrowDown, CornerDownRight, Star } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   const [timeState, setTimeState] = useState({
@@ -116,16 +117,21 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <Button className="rounded-xs text-base">
-                  <CornerDownRight />
-                  Let&apos;s Work Together
+                <Button className="rounded-xs text-base" asChild>
+                  <Link href="/contact">
+                    <CornerDownRight />
+                    Let&apos;s Work Together
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
                   className="rounded-xs text-base bg-foreground/10"
+                  asChild
                 >
-                  <ArrowDown />
-                  View All Work
+                  <Link href="#projects" scroll={true}>
+                    <ArrowDown />
+                    View All Work
+                  </Link>
                 </Button>
               </motion.div>
             </div>
@@ -143,9 +149,9 @@ const Hero = () => {
               <div className="h-auto w-full overflow-hidden relative">
                 <div className="overflow-hidden rounded-sm">
                   <Image
-                    src="https://res.cloudinary.com/df3ak7hgk/image/upload/v1774689377/Screenshot_2026-03-28_171524_ebxyfg.png"
+                    src="https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_2_ourmrj.png"
                     loading="eager"
-                    alt="Hero"
+                    alt="Eagles Nexus phone mockup image"
                     width={500}
                     height={500}
                     className="rounded-sm transition-transform duration-500 group-hover:scale-105"
@@ -153,17 +159,16 @@ const Hero = () => {
                 </div>
                 <div className="flex flex-col mt-4 pb-4 border-b border-black/10 dark:border-white/10">
                   <h3 className="font-pp-neue-montreal text-md tracking-tight leading-5 text-lg">
-                    Developed a web app to Empower Vet Clinics with Smart and
-                    Simple Solution.
+                    Eagles Nexus web application.
                   </h3>
                   <p className="mt-1 font-pp-neue-montreal text-sm tracking-tight leading-4 font-light text-muted-foreground">
-                    Vetdatalynx is a web application that helps veterinary
-                    clinics manage their patient records, appointments, and
-                    inventory.
+                    A membership platform for managing records, subscriptions,
+                    donations, communications, reports, and administrative
+                    access.
                   </p>
                 </div>
                 <div className="flex items-center gap-2 mt-2 text-md tracking-tight font-pp-neue-montreal">
-                  <CornerDownRight className="w-4 h-4" />
+                  <Star className="w-4 h-4" />
                   Latest Project
                 </div>
               </div>

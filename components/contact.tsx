@@ -17,7 +17,10 @@ const Contact = () => {
             className="lg:col-span-5"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.6,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             <h1 className="text-4xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty xl:text-5xl">
               Let&apos;s work together.
@@ -32,9 +35,7 @@ const Contact = () => {
                 <p className="text-xs uppercase tracking-wider text-muted-foreground">
                   Working hours
                 </p>
-                <p className="mt-2 text-foreground">
-                  Mon to Fri, 8AM - 5PM
-                </p>
+                <p className="mt-2 text-foreground">Mon to Fri, 8AM - 5PM</p>
                 <p className="mt-1 text-muted-foreground">
                   Sat, 10AM - 2PM. Sundays and bank holidays, closed.
                 </p>
@@ -44,7 +45,7 @@ const Contact = () => {
                   Location
                 </p>
                 <p className="mt-2 text-foreground">
-                  Legazpi City, Bicol, Philippines
+                  Camarines Sur, Philippines
                 </p>
                 <p className="mt-1 text-muted-foreground">
                   Working remotely with clients anywhere.
@@ -57,7 +58,11 @@ const Contact = () => {
             className="grid gap-6 lg:col-span-6 lg:col-start-7"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.6,
+              delay: reduceMotion ? 0 : 0.15,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             <div className="grid gap-2">
               <label

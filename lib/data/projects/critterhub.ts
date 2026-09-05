@@ -11,12 +11,12 @@ export const critterHub = {
     live: "https://critter-hub.vetdatalynx.com",
   },
   overview: [
-    "CritterHub is a production web application I developed for the same client behind VetDataLynx. My responsibility did not stop at feature work: I also handled its production delivery and continue to maintain the deployed application.",
-    "The project represents the full lifecycle of client work, from building the application to supporting it after people began using it in production.",
+    "CritterHub is a production web application I developed for the same client behind VetdataLynx. While VetdataLynx was built around the broader needs of a veterinary clinic, CritterHub was created for a more focused market.",
+    "Groomers and smaller clinics that mainly need the day-to-day tools around appointments, services, billing, and inventory without the larger scope of a full veterinary management system.",
   ],
   problem: [
-    "The client needed a separate application taken from development into a stable production environment. That required more than completing the initial build because issues and requested changes would continue to surface through real use.",
-    "The work therefore had to cover delivery and ongoing support as part of the product, not as disconnected handoff tasks.",
+    "VetdataLynx covered a wide range of veterinary operations, but that scope was more than some smaller clinics and grooming businesses needed. The client wanted another product that could serve those businesses without carrying over every workflow and feature from the larger platform.",
+    "The challenge was deciding what was actually useful for that audience and keeping the application focused enough for simpler operations while still covering the parts of the business they use every day.",
   ],
   role: {
     title: "Web development, deployment, and maintenance",
@@ -28,10 +28,41 @@ export const critterHub = {
     ],
   },
   solution: [
-    "I handled the application across development and production delivery, keeping responsibility for the working product rather than ending at a code handoff.",
-    "After release, I continued fixing bugs and maintaining the system as issues and changes were identified through day-to-day use.",
+    "I built CritterHub as a more focused alternative to VetdataLynx rather than trying to fit both types of businesses into the same product. The application keeps the operational features that still make sense for groomers and smaller clinics while leaving out the broader veterinary workflows they are less likely to use.",
+    "I also handled the production deployment and continue to maintain the application, so my involvement covers both the build itself and the work needed to keep the deployed product ready for use.",
   ],
-  features: [],
+  features: [
+    {
+      title: "Appointment Management",
+      description:
+        "Manage bookings, schedules, and appointment details for grooming and clinic services.",
+    },
+    {
+      title: "Grooming Services Management",
+      description:
+        "Create and manage grooming services, pricing, and the service options offered to customers.",
+    },
+    {
+      title: "Billing Management",
+      description:
+        "Handle customer charges, service payments, and billing records within the same system.",
+    },
+    {
+      title: "Inventory Management",
+      description:
+        "Track products and supplies, monitor stock levels, and keep inventory records organized.",
+    },
+    {
+      title: "Role-based Access Control",
+      description:
+        "Control what users can access and manage based on their assigned roles and responsibilities.",
+    },
+    {
+      title: "Custom Landing Pages",
+      description:
+        "Provide each subscriber with a customizable public-facing page for their business and services.",
+    },
+  ],
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574535/mockup_1_lvod90.png",
@@ -90,16 +121,12 @@ export const critterHub = {
   ],
   deployment: {
     description:
-      "I moved CritterHub into its production environment and remained responsible for the application after launch.",
+      "I moved CritterHub into client's VPS production environment and remained responsible for the application after launch.",
     responsibilities: ["Production deployment", "Release support"],
   },
-  postLaunch: {
-    description:
-      "I continue to support the live application, resolve bugs, and make maintenance changes based on issues found after release.",
-    responsibilities: ["Bug fixes", "Application maintenance"],
-  },
+  postLaunch: {},
   outcome: [
-    "CritterHub is live in production and remains under active maintenance.",
-    "The project moved from application development into an ongoing client engagement covering deployment, fixes, and post-launch support.",
+    "CritterHub was completed and deployed as a production-ready platform tailored to groomers and smaller veterinary clinics.",
+    "The client now has a more focused alternative to VetdataLynx, covering the essential operational workflows without the complexity of a larger veterinary management system.",
   ],
 } satisfies Project;

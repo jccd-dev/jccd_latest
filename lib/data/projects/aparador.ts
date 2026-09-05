@@ -113,9 +113,17 @@ export const aparador = {
     },
   ],
   techStack: [
-    { category: "Application", technologies: ["Next.js", "TypeScript"] },
+    {
+      category: "Application",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Express.js",
+        "Tailwind CSS",
+        "Clerk",
+      ],
+    },
     { category: "Data", technologies: ["PostgreSQL", "Neon", "Redis"] },
-    { category: "Authentication", technologies: ["Clerk"] },
     {
       category: "Infrastructure",
       technologies: [
@@ -126,7 +134,10 @@ export const aparador = {
         "Linux",
       ],
     },
-    { category: "Services", technologies: ["Resend", "Cloudflare Images"] },
+    {
+      category: "Services",
+      technologies: ["Resend", "Cloudflare Images", "Fal.ai", "Google Cloud"],
+    },
   ],
   deployment: {
     description:

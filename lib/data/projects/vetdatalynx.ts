@@ -2,7 +2,7 @@ import type { Project } from "./types";
 
 export const vetdatalynx = {
   slug: "vetdatalynx",
-  title: "VetDataLynx",
+  title: "VetdataLynx",
   shortDescription:
     "A veterinary clinic management platform that keeps patient care, appointments, inventory, billing, and daily operations in one system.",
   type: "Web application",
@@ -74,7 +74,10 @@ export const vetdatalynx = {
     },
   ],
   techStack: [
-    { category: "Application", technologies: ["PHP", "Laravel", "Livewire", "JavaScript"] },
+    {
+      category: "Application",
+      technologies: ["PHP", "Laravel", "Livewire", "JavaScript"],
+    },
     { category: "Data", technologies: ["MySQL"] },
     { category: "Interface", technologies: ["Tailwind CSS"] },
     { category: "Delivery", technologies: ["GitHub Actions", "Linux"] },
@@ -83,12 +86,20 @@ export const vetdatalynx = {
     description:
       "I took part in moving VetDataLynx from development into a Linux production environment and set up GitHub Actions to support repeatable delivery. Deployment work remains connected to application changes, so releases and infrastructure are maintained as part of the same product.",
     technologies: ["GitHub Actions", "Linux"],
-    responsibilities: ["Production deployment", "Release workflow", "Server maintenance"],
+    responsibilities: [
+      "Production deployment",
+      "Release workflow",
+      "Server maintenance",
+    ],
   },
   postLaunch: {
     description:
       "The work continued after launch. I maintain the application, fix issues found through real clinic use, and update existing workflows as the product changes.",
-    responsibilities: ["Application maintenance", "Bug fixes", "Workflow updates"],
+    responsibilities: [
+      "Application maintenance",
+      "Bug fixes",
+      "Workflow updates",
+    ],
   },
   outcome: [
     "VetDataLynx is live and used as an active veterinary clinic management application.",
