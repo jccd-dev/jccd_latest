@@ -1,7 +1,7 @@
 export type ProjectText = string | readonly string[];
 type NonEmptyArray<T> = readonly [T, ...T[]];
 
-export type ProjectStatus = "Live" | "Completed" | "Maintaining" | "Private";
+export type ProjectStatus = "Live" | "In development" | "Completed" | "Maintaining" | "Private";
 
 export interface ProjectScreenshot {
   src: string;
@@ -28,15 +28,15 @@ export interface Project {
     responsibilities: NonEmptyArray<string>;
   };
   solution: ProjectText;
-  features: NonEmptyArray<{
+  features: readonly {
     title: string;
     description: string;
-  }>;
-  screenshots: NonEmptyArray<ProjectScreenshot>;
-  techStack: NonEmptyArray<{
+  }[];
+  screenshots: readonly ProjectScreenshot[];
+  techStack: readonly {
     category: string;
     technologies: readonly string[];
-  }>;
+  }[];
   deployment?: {
     description?: ProjectText;
     technologies?: readonly string[];

@@ -53,7 +53,7 @@ const Hero = () => {
           maxOpacity={0.1}
           duration={3}
           className={cn(
-            "[mask-image:radial-gradient(700px_circle_at_center,white,transparent)]",
+            "mask-[radial-gradient(700px_circle_at_center,white,transparent)]",
             "inset-x-0 h-full skew-y-12",
           )}
         />
@@ -70,8 +70,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                Hello I&apos;m John Carlo, a Fullstack Web Developer and
-                Freelancer based in the Philippines.
+                Hello I&apos;m John Carlo, an AI-Augmented Full-Stack Developer
+                and Freelancer based in the Philippines.
               </motion.h1>
             </div>
 

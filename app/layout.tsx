@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothScrolling } from "@/components/smooth-scrolling";
 import localFont from "next/font/local";
 
 const ppNeueMontreal = localFont({
@@ -38,8 +39,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <SmoothScrolling>
+            <main>{children}</main>
+            <Footer />
+          </SmoothScrolling>
         </ThemeProvider>
       </body>
     </html>

@@ -2,14 +2,21 @@
 
 import { gsap } from "gsap";
 import Link from "next/link";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { ModeToggle } from "../mode-toggle";
 import "./staggered-menu.css";
 
 const menuItems = [
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/#projects" },
+  { label: "About", href: "/#about" },
+  { label: "Contact us", href: "/contact" },
 ] as const;
 
 export default function StaggeredMenu() {
@@ -42,9 +49,13 @@ export default function StaggeredMenu() {
     timelineRef.current?.kill();
 
     const panel = panelRef.current;
-    const layers = layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
-    const labels = panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const layers =
+      layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
+    const labels =
+      panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     timelineRef.current = gsap
       .timeline({
@@ -88,10 +99,15 @@ export default function StaggeredMenu() {
     timelineRef.current?.kill();
 
     const panel = panelRef.current;
-    const layers = layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
-    const labels = panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
-    const details = panel?.querySelectorAll<HTMLElement>(".sm-panel-detail") ?? [];
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const layers =
+      layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
+    const labels =
+      panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
+    const details =
+      panel?.querySelectorAll<HTMLElement>(".sm-panel-detail") ?? [];
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     gsap.set(labels, { yPercent: 120 });
     gsap.set(details, { opacity: 0, y: 12 });
@@ -180,7 +196,11 @@ export default function StaggeredMenu() {
   }, [closeMenu, open]);
 
   return (
-    <div ref={wrapperRef} className="staggered-menu-wrapper" data-open={open || undefined}>
+    <div
+      ref={wrapperRef}
+      className="staggered-menu-wrapper"
+      data-open={open || undefined}
+    >
       {open && (
         <button
           className="sm-backdrop"
@@ -197,8 +217,12 @@ export default function StaggeredMenu() {
 
       <header className="staggered-menu-header" aria-label="Main navigation">
         <div className="container mx-auto flex h-full items-center justify-between px-4 lg:px-6">
-          <Link className="sm-logo" href="/" aria-label="JC.DEV home">
-            JC.DEV
+          <Link
+            className="sm-logo font-pp-neue-montreal"
+            href="/"
+            aria-label="JccdLabs Home"
+          >
+            JccdLabs
           </Link>
           <button
             ref={toggleRef}
@@ -243,15 +267,20 @@ export default function StaggeredMenu() {
         </nav>
 
         <div className="sm-panel-footer">
-          <Link className="sm-contact sm-panel-detail" href="#about" onClick={() => closeMenu(false)}>
+          <Link
+            className="sm-contact sm-panel-detail"
+            href="/contact"
+            onClick={() => closeMenu(false)}
+          >
             Let&apos;s Work Together
           </Link>
           <div className="sm-panel-links sm-panel-detail">
-            <a href="https://github.com/jccd-dev" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/jccd-dev"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
-            </a>
-            <a href="/johncarlodigay_resume.pdf" target="_blank" rel="noreferrer">
-              Resume
             </a>
             <span className="sm-theme">
               <span className="sr-only">Theme</span>

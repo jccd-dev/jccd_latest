@@ -1,11 +1,12 @@
-import { ajmpInventory } from "./ajmp-inventory";
+import { aparador } from "./aparador";
+import { critterHub } from "./critterhub";
+import { eaglesNexus } from "./eagles-nexus";
 import { vetdatalynx } from "./vetdatalynx";
-import { whisperNote } from "./whisper-note";
 import type { Project } from "./types";
 
 export type { Project, ProjectScreenshot, ProjectStatus, ProjectText } from "./types";
 
-export const projects: readonly Project[] = [vetdatalynx, whisperNote, ajmpInventory];
+export const projects: readonly Project[] = [vetdatalynx, critterHub, eaglesNexus, aparador];
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);

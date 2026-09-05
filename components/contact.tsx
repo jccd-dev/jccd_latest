@@ -15,9 +15,9 @@ const Contact = () => {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-10">
           <motion.div
             className="lg:col-span-5"
-            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: reduceMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <h1 className="text-4xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty xl:text-5xl">
               Let&apos;s work together.
@@ -55,9 +55,9 @@ const Contact = () => {
 
           <motion.form
             className="grid gap-6 lg:col-span-6 lg:col-start-7"
-            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="grid gap-2">
               <label
