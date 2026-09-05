@@ -16,7 +16,7 @@ const menuItems = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/#projects" },
   { label: "About", href: "/#about" },
-  { label: "Contact us", href: "/contact" },
+  { label: "Say Hello", href: "/contact" },
 ] as const;
 
 export default function StaggeredMenu() {
