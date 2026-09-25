@@ -66,11 +66,32 @@ export const vetdatalynx = {
   ],
   screenshots: [
     {
-      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1774689377/Screenshot_2026-03-28_171524_ebxyfg.png",
-      alt: "Vetdatalynx clinic operations interface",
-      title: "Clinic operations",
+      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_1_edqjor.png",
+      alt: "Vetdatalynx operations interface 1",
+      title: "Landing Page",
+      description:
+        "Vetdatalynx.com landing page with a login form and a brief overview of the application.",
+    },
+    {
+      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_4_gb9a0g.png",
+      alt: "Vetdatalynx perations interface 2",
+      title: "Dashboard and Inventory",
       description:
         "One of the operational views used for managing veterinary clinic records and workflows.",
+    },
+    {
+      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_2_i1clly.png",
+      alt: "Vetdatalynx operations interface 3",
+      title: "Usable Forms and Reports",
+      description:
+        "One of the operational views used for managing veterinary clinic records and workflows.",
+    },
+    {
+      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_3_kia773.png",
+      alt: "Vetdatalynx operations interface 4",
+      title: "Desktop and Mobile",
+      description:
+        "VetDataLynx is designed to work on both desktop and mobile devices, so clinic staff can access the application from anywhere.",
     },
   ],
   techStack: [

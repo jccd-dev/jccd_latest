@@ -46,7 +46,7 @@ const About = () => {
           <div className="lg:col-start-7 md:col-start-1 flex flex-col md:flex-row gap-6 md:col-span-6">
             <div className="w-full lg:w-1/2">
               <Image
-                src="/jcportrait.jpg"
+                src="/jcportrait.png"
                 alt="Hero"
                 width={500}
                 height={0}

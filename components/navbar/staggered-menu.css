@@ -17,13 +17,7 @@
 .sm-toggle {
   color: var(--foreground);
   pointer-events: auto;
-  transition: color 0s 380ms;
-}
-
-.staggered-menu-wrapper[data-open] .sm-logo,
-.staggered-menu-wrapper[data-open] .sm-toggle {
-  color: #fff;
-  transition-delay: 0s;
+  transition: color 240ms ease;
 }
 
 .sm-logo {
@@ -100,8 +94,11 @@
   inset: 0;
   z-index: 4;
   border: 0;
-  background: rgb(0 0 0 / 0.36);
-  pointer-events: auto;
+  background: color-mix(in oklch, var(--foreground) 25%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
   cursor: default;
 }
 
@@ -122,17 +119,18 @@
 .sm-prelayer {
   position: absolute;
   inset: 0;
+  border-left: 1px solid var(--border);
   transform: translate3d(100%, 0, 0);
   will-change: transform;
 }
 
 .sm-prelayer-paper {
-  background: #fefefe;
+  background: var(--muted);
 }
 
 .sm-prelayer-graphite {
   left: 1rem;
-  background: #5f625f;
+  background: var(--secondary);
 }
 
 .staggered-menu-panel {
@@ -142,8 +140,10 @@
   justify-content: space-between;
   overflow-y: auto;
   padding: 8.5rem 3rem 2.625rem;
-  background: #000;
-  color: #fefefe;
+  background: var(--card);
+  color: var(--foreground);
+  border-left: 1px solid var(--border);
+  box-shadow: -12px 0 36px -8px oklch(0 0 0 / 0.15);
   pointer-events: auto;
   transform: translate3d(100%, 0, 0);
   will-change: transform;
@@ -189,11 +189,12 @@
 }
 
 .sm-contact {
-  color: #fefefe;
+  color: var(--foreground);
   text-decoration: none;
-  border-bottom: 1px solid currentColor;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 0.3125rem;
   white-space: nowrap;
+  transition: border-color 180ms ease;
 }
 
 .sm-panel-links {
@@ -203,27 +204,31 @@
 }
 
 .sm-panel-links > a {
-  color: #a3a3a3;
+  color: var(--muted-foreground);
   text-decoration: none;
   transition: color 180ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .sm-panel-list:has(a:hover) a:not(:hover) .sm-panel-item-label {
-    color: #696d69;
+    color: var(--muted-foreground);
   }
 
   .sm-panel-links > a:hover {
-    color: #fefefe;
+    color: var(--foreground);
+  }
+
+  .sm-contact:hover {
+    border-bottom-color: var(--foreground);
   }
 }
 
 .sm-theme button {
   width: 44px;
   height: 44px;
-  border: 1px solid #303030;
-  background: transparent !important;
-  color: #fefefe !important;
+  border: 1px solid var(--border);
+  background: var(--muted) !important;
+  color: var(--foreground) !important;
 }
 
 @media (max-width: 768px) {

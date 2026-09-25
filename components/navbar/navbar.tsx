@@ -23,19 +23,34 @@ export default function StaggeredMenu() {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const layersRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const iconRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
-  const timelineRef = useRef<gsap.core.Timeline>(null);
+  const activeTimeline = useRef<gsap.core.Timeline | null>(null);
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
-      const layers = layersRef.current?.querySelectorAll(".sm-prelayer");
-      gsap.set([panelRef.current, ...(layers ?? [])], {
+      const layers =
+        layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
+      const panel = panelRef.current;
+      const labels =
+        panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
+      const details =
+        panel?.querySelectorAll<HTMLElement>(".sm-panel-detail") ?? [];
+      const backdrop = backdropRef.current;
+
+      // Set initial off-screen states
+      gsap.set([panel, ...Array.from(layers)], {
         transform: "translate3d(100%, 0, 0)",
       });
+      gsap.set(labels, { yPercent: 120 });
+      gsap.set(details, { opacity: 0, y: 16 });
+      if (backdrop) {
+        gsap.set(backdrop, { opacity: 0, pointerEvents: "none" });
+      }
     }, wrapperRef);
 
     return () => context.revert();
@@ -43,60 +58,9 @@ export default function StaggeredMenu() {
 
   const closeMenu = useCallback((restoreFocus = true) => {
     if (!openRef.current) return;
-
     openRef.current = false;
-    setOpen(false);
-    timelineRef.current?.kill();
 
-    const panel = panelRef.current;
-    const layers =
-      layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
-    const labels =
-      panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    timelineRef.current = gsap
-      .timeline({
-        onComplete: () => {
-          if (restoreFocus) toggleRef.current?.focus();
-        },
-      })
-      .to(labels, {
-        yPercent: 120,
-        duration: reducedMotion ? 0 : 0.16,
-        ease: "power2.out",
-      })
-      .to(
-        [panel, ...layers],
-        {
-          transform: "translate3d(100%, 0, 0)",
-          duration: reducedMotion ? 0 : 0.28,
-          ease: "power3.out",
-          stagger: reducedMotion ? 0 : 0.03,
-        },
-        0,
-      );
-
-    gsap.to(iconRef.current, {
-      rotate: 0,
-      duration: reducedMotion ? 0 : 0.2,
-      ease: "power3.out",
-    });
-    gsap.to(textRef.current, {
-      yPercent: 0,
-      duration: reducedMotion ? 0 : 0.2,
-      ease: "power3.out",
-    });
-  }, []);
-
-  const openMenu = useCallback(() => {
-    if (openRef.current) return;
-
-    openRef.current = true;
-    setOpen(true);
-    timelineRef.current?.kill();
+    activeTimeline.current?.kill();
 
     const panel = panelRef.current;
     const layers =
@@ -105,62 +69,254 @@ export default function StaggeredMenu() {
       panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
     const details =
       panel?.querySelectorAll<HTMLElement>(".sm-panel-detail") ?? [];
+    const backdrop = backdropRef.current;
+    const icon = iconRef.current;
+    const text = textRef.current;
+
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    gsap.set(labels, { yPercent: 120 });
-    gsap.set(details, { opacity: 0, y: 12 });
+    if (reducedMotion) {
+      gsap.set([panel, ...Array.from(layers)], {
+        transform: "translate3d(100%, 0, 0)",
+      });
+      gsap.set(labels, { yPercent: 120 });
+      gsap.set(details, { opacity: 0, y: 16 });
+      if (backdrop) {
+        gsap.set(backdrop, { opacity: 0, pointerEvents: "none" });
+      }
+      if (icon) gsap.set(icon, { rotate: 0 });
+      if (text) gsap.set(text, { yPercent: 0 });
+      if (restoreFocus) toggleRef.current?.focus();
+      setOpen(false);
+      return;
+    }
 
-    timelineRef.current = gsap
-      .timeline({
-        onComplete: () => panel?.querySelector<HTMLAnchorElement>("a")?.focus(),
-      })
-      .to([...layers, panel], {
-        transform: "translate3d(0%, 0, 0)",
-        duration: reducedMotion ? 0 : 0.34,
-        ease: "power3.out",
-        stagger: reducedMotion ? 0 : 0.05,
-      })
-      .to(
-        labels,
+    const tl = gsap.timeline({
+      onComplete: () => {
+        if (restoreFocus) toggleRef.current?.focus();
+        setOpen(false);
+      },
+    });
+
+    // 1. First, animate details out
+    tl.to(
+      details,
+      {
+        opacity: 0,
+        y: 10,
+        duration: 0.22,
+        ease: "power2.in",
+        stagger: 0.03,
+      },
+      0,
+    );
+
+    // 2. Animate out the menu links FIRST (staggered from bottom to top)
+    // Giving adequate time so it doesn't feel rushed
+    tl.to(
+      Array.from(labels).reverse(),
+      {
+        yPercent: 120,
+        duration: 0.35,
+        ease: "power3.in",
+        stagger: 0.04,
+      },
+      0.04,
+    );
+
+    // 3. ONLY AFTER the links finish animating out, slide the main drawer panel and prelayers away
+    // Order: Panel slides out first to reveal Graphite, then Graphite, then Paper
+    const drawerStartTime = 0.44;
+    const panelAndLayers = [panel, ...Array.from(layers).reverse()];
+
+    tl.to(
+      panelAndLayers,
+      {
+        transform: "translate3d(100%, 0, 0)",
+        duration: 0.65,
+        ease: "power3.inOut",
+        stagger: 0.07,
+      },
+      drawerStartTime,
+    );
+
+    // Toggle button icon and text return in sync with the drawer retracting
+    if (icon) {
+      tl.to(
+        icon,
+        {
+          rotate: 0,
+          duration: 0.45,
+          ease: "power3.out",
+        },
+        drawerStartTime,
+      );
+    }
+    if (text) {
+      tl.to(
+        text,
         {
           yPercent: 0,
-          duration: reducedMotion ? 0 : 0.28,
+          duration: 0.35,
           ease: "power3.out",
-          stagger: reducedMotion ? 0 : 0.05,
         },
-        reducedMotion ? 0 : 0.1,
-      )
-      .to(
-        details,
+        drawerStartTime,
+      );
+    }
+
+    // Backdrop fades out as drawer leaves
+    if (backdrop) {
+      tl.to(
+        backdrop,
+        {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.inOut",
+          onComplete: () => {
+            gsap.set(backdrop, { pointerEvents: "none" });
+          },
+        },
+        drawerStartTime,
+      );
+    }
+
+    activeTimeline.current = tl;
+  }, []);
+
+  const openMenu = useCallback(() => {
+    if (openRef.current) return;
+    openRef.current = true;
+    setOpen(true);
+
+    activeTimeline.current?.kill();
+
+    const panel = panelRef.current;
+    const layers =
+      layersRef.current?.querySelectorAll<HTMLElement>(".sm-prelayer") ?? [];
+    const labels =
+      panel?.querySelectorAll<HTMLElement>(".sm-panel-item-label") ?? [];
+    const details =
+      panel?.querySelectorAll<HTMLElement>(".sm-panel-detail") ?? [];
+    const backdrop = backdropRef.current;
+    const icon = iconRef.current;
+    const text = textRef.current;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion) {
+      gsap.set([panel, ...Array.from(layers)], {
+        transform: "translate3d(0%, 0, 0)",
+      });
+      gsap.set(labels, { yPercent: 0 });
+      gsap.set(details, { opacity: 1, y: 0 });
+      if (backdrop) {
+        gsap.set(backdrop, { opacity: 1, pointerEvents: "auto" });
+      }
+      if (icon) gsap.set(icon, { rotate: 225 });
+      if (text) gsap.set(text, { yPercent: -50 });
+      panel?.querySelector<HTMLAnchorElement>("a")?.focus();
+      return;
+    }
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        panel?.querySelector<HTMLAnchorElement>("a")?.focus();
+      },
+    });
+
+    // 1. Backdrop fade in
+    if (backdrop) {
+      tl.to(
+        backdrop,
         {
           opacity: 1,
-          y: 0,
-          duration: reducedMotion ? 0 : 0.24,
+          pointerEvents: "auto",
+          duration: 0.5,
           ease: "power2.out",
-          stagger: reducedMotion ? 0 : 0.05,
         },
-        reducedMotion ? 0 : 0.15,
+        0,
       );
+    }
 
-    gsap.to(iconRef.current, {
-      rotate: 225,
-      duration: reducedMotion ? 0 : 0.28,
-      ease: "power3.out",
-    });
-    gsap.to(textRef.current, {
-      yPercent: -50,
-      duration: reducedMotion ? 0 : 0.24,
-      ease: "power3.out",
-    });
+    // 2. Sliding layers and main panel: Paper -> Graphite -> Dark panel
+    tl.to(
+      [...Array.from(layers), panel],
+      {
+        transform: "translate3d(0%, 0, 0)",
+        duration: 0.75,
+        ease: "power4.out",
+        stagger: 0.08,
+      },
+      0,
+    );
+
+    // 3. Typography reveal: home -> projects -> about -> say hello
+    tl.to(
+      labels,
+      {
+        yPercent: 0,
+        duration: 0.55,
+        ease: "power3.out",
+        stagger: 0.06,
+      },
+      0.32,
+    );
+
+    // 4. Panel details (footer CTA, GitHub link, theme toggle)
+    tl.to(
+      details,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power2.out",
+        stagger: 0.06,
+      },
+      0.5,
+    );
+
+    // 5. Toggle button icon & text
+    if (icon) {
+      tl.to(
+        icon,
+        {
+          rotate: 225,
+          duration: 0.5,
+          ease: "power3.out",
+        },
+        0.1,
+      );
+    }
+    if (text) {
+      tl.to(
+        text,
+        {
+          yPercent: -50,
+          duration: 0.4,
+          ease: "power3.out",
+        },
+        0.1,
+      );
+    }
+
+    activeTimeline.current = tl;
   }, []);
 
   useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
     document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -191,9 +347,18 @@ export default function StaggeredMenu() {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = "";
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [closeMenu, open]);
+
+  const toggleMenu = useCallback(() => {
+    if (openRef.current) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }, [closeMenu, openMenu]);
 
   return (
     <div
@@ -201,14 +366,14 @@ export default function StaggeredMenu() {
       className="staggered-menu-wrapper"
       data-open={open || undefined}
     >
-      {open && (
-        <button
-          className="sm-backdrop"
-          type="button"
-          aria-label="Close menu"
-          onClick={() => closeMenu()}
-        />
-      )}
+      <button
+        ref={backdropRef}
+        className="sm-backdrop"
+        type="button"
+        aria-label="Close menu"
+        tabIndex={open ? 0 : -1}
+        onClick={() => closeMenu()}
+      />
 
       <div ref={layersRef} className="sm-prelayers" aria-hidden="true">
         <div className="sm-prelayer sm-prelayer-paper" />
@@ -231,7 +396,7 @@ export default function StaggeredMenu() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="staggered-menu-panel"
-            onClick={open ? () => closeMenu() : openMenu}
+            onClick={toggleMenu}
           >
             <span className="sm-toggle-text-wrap" aria-hidden="true">
               <span ref={textRef} className="sm-toggle-text">
