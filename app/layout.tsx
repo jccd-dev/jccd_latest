@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScrolling } from "@/components/smooth-scrolling";
 import localFont from "next/font/local";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const ppNeueMontreal = localFont({
   src: "../public/fonts/PPNeueMontreal.woff",
@@ -16,10 +17,37 @@ const ppNeueMontreal = localFont({
 const geistSans = Geist({
   subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
-  title: "John Carlo Digay Portfolio",
-  description:
-    "John Carlo Digay is a full-stack developer based in the Philippines. He is a graduate from Camarines Sur Polytechnic Collges with a Bachelor of Science in Information Technology. He is currently working as a full-stack developer Doc Tormes Veterinary Clinic.",
+  metadataBase: new URL(SITE_URL),
+
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+
+  description: SITE_DESCRIPTION,
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    type: "website",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: ["/public/jcportrait.png"],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: ["/public/jcportrait.png"],
+  },
 };
 
 export default function RootLayout({
