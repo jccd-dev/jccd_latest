@@ -2,12 +2,46 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, useReducedMotion } from "motion/react";
+import { useState, type SubmitEvent } from "react";
 
 const inputClasses =
   "w-full rounded-xs border border-input bg-transparent px-4 py-3 text-base text-foreground outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 motion-reduce:transition-none";
 
+type SendStatus = "idle" | "sending" | "sent" | "error";
+
 const Contact = () => {
   const reduceMotion = useReducedMotion();
+  const [status, setStatus] = useState<SendStatus>("idle");
+
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (status === "sending") return;
+
+    const data = new FormData(form);
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
+      });
+
+      if (response.ok) {
+        form.reset();
+        setStatus("sent");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
     <section className="w-full">
@@ -56,6 +90,7 @@ const Contact = () => {
 
           <motion.form
             className="grid gap-6 lg:col-span-6 lg:col-start-7"
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -77,6 +112,7 @@ const Contact = () => {
                 type="text"
                 autoComplete="name"
                 required
+                disabled={status === "sending"}
                 className={inputClasses}
               />
             </div>
@@ -94,6 +130,7 @@ const Contact = () => {
                 type="email"
                 autoComplete="email"
                 required
+                disabled={status === "sending"}
                 className={inputClasses}
               />
             </div>
@@ -113,15 +150,34 @@ const Contact = () => {
                 name="message"
                 rows={6}
                 required
+                disabled={status === "sending"}
                 aria-describedby="message-hint"
                 className={`${inputClasses} resize-y`}
               />
             </div>
 
             <div>
-              <Button type="submit" size="lg" className="rounded-xs text-base">
-                Send Message
+              <Button
+                type="submit"
+                size="lg"
+                disabled={status === "sending"}
+                className="rounded-xs text-base"
+              >
+                {status === "sending" ? "Sending..." : "Send Message"}
               </Button>
+              {status === "sent" && (
+                <p
+                  role="status"
+                  className="mt-4 text-sm text-foreground"
+                >
+                  Thanks. I will get back to you within my working hours.
+                </p>
+              )}
+              {status === "error" && (
+                <p role="alert" className="mt-4 text-sm text-destructive">
+                  Something went wrong. Please try again.
+                </p>
+              )}
             </div>
           </motion.form>
         </div>
