@@ -42,6 +42,7 @@ export const onRequestPost: PagesFunction<ContactEnv> = async ({
   env,
 }) => {
   if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL) {
+    console.error("Contact email requires RESEND_API_KEY and CONTACT_TO_EMAIL runtime bindings.");
     return Response.json(
       { error: "Email is not configured on the server." },
       { status: 500 },
@@ -55,12 +56,19 @@ export const onRequestPost: PagesFunction<ContactEnv> = async ({
 
   let body: unknown;
   try {
-    body = await request.json();
+    const rawBody = await request.text();
+    if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
+      return Response.json({ error: "Message is too large." }, { status: 413 });
+    }
+    body = JSON.parse(rawBody);
   } catch {
     return Response.json({ error: "Request must be JSON." }, { status: 400 });
   }
 
-  const { name, email, message } = (body ?? {}) as Record<string, unknown>;
+  if (typeof body !== "object" || body === null || Array.isArray(body)) {
+    return Response.json({ error: "Request must be a JSON object." }, { status: 400 });
+  }
+  const { name, email, message } = body as Record<string, unknown>;
 
   if (
     typeof name !== "string" ||
@@ -92,7 +100,7 @@ export const onRequestPost: PagesFunction<ContactEnv> = async ({
   const resend = new Resend(env.RESEND_API_KEY);
   const { data, error } = await resend.emails.send(
     {
-      from: env.RESEND_FROM ?? "onboarding@resend.dev",
+      from: env.RESEND_FROM?.trim() || "onboarding@resend.dev",
       to: [env.CONTACT_TO_EMAIL],
       replyTo: [email],
       subject: `New contact form message from ${name}`,
@@ -103,7 +111,7 @@ export const onRequestPost: PagesFunction<ContactEnv> = async ({
     { idempotencyKey: await idempotencyKeyFor(name, email, message) },
   );
 
-  if (error) {
+  if (error || !data?.id) {
     console.error("Resend send failed:", error);
     return Response.json(
       { error: "Failed to send your message. Please try again." },

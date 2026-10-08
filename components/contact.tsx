@@ -12,6 +12,7 @@ type SendStatus = "idle" | "sending" | "sent" | "error";
 const Contact = () => {
   const reduceMotion = useReducedMotion();
   const [status, setStatus] = useState<SendStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,6 +21,7 @@ const Contact = () => {
 
     const data = new FormData(form);
     setStatus("sending");
+    setErrorMessage("");
 
     try {
       const response = await fetch("/api/contact", {
@@ -32,13 +34,28 @@ const Contact = () => {
         }),
       });
 
-      if (response.ok) {
-        form.reset();
-        setStatus("sent");
-      } else {
-        setStatus("error");
+      if (!response.headers.get("content-type")?.includes("application/json")) {
+        throw new Error("The contact service is unavailable. Please try again later.");
       }
-    } catch {
+
+      const result: unknown = await response.json();
+      if (typeof result !== "object" || result === null) {
+        throw new Error("The contact service returned an invalid response.");
+      }
+      if (!response.ok) {
+        throw new Error(
+          "error" in result && typeof result.error === "string"
+            ? result.error
+            : "Failed to send your message. Please try again.",
+        );
+      }
+      if (!("success" in result) || result.success !== true) {
+        throw new Error("The contact service returned an invalid response.");
+      }
+      form.reset();
+      setStatus("sent");
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
       setStatus("error");
     }
   };
@@ -111,6 +128,7 @@ const Contact = () => {
                 name="name"
                 type="text"
                 autoComplete="name"
+                maxLength={100}
                 required
                 disabled={status === "sending"}
                 className={inputClasses}
@@ -129,6 +147,7 @@ const Contact = () => {
                 name="email"
                 type="email"
                 autoComplete="email"
+                maxLength={254}
                 required
                 disabled={status === "sending"}
                 className={inputClasses}
@@ -149,6 +168,7 @@ const Contact = () => {
                 id="message"
                 name="message"
                 rows={6}
+                maxLength={5000}
                 required
                 disabled={status === "sending"}
                 aria-describedby="message-hint"
@@ -175,7 +195,7 @@ const Contact = () => {
               )}
               {status === "error" && (
                 <p role="alert" className="mt-4 text-sm text-destructive">
-                  Something went wrong. Please try again.
+                  {errorMessage}
                 </p>
               )}
             </div>
