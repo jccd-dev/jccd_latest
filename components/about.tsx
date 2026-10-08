@@ -47,7 +47,7 @@ const About = () => {
             <div className="w-full lg:w-1/2">
               <Image
                 src="/jcportrait.png"
-                alt="Hero"
+                alt="Portrait of John Carlo Digay, a freelance full-stack developer behind JccdLabs"
                 width={500}
                 height={0}
                 className="w-full h-auto object-cover rounded-sm"
