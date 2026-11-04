@@ -36,12 +36,10 @@ export default function Home() {
           __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="space-y-10 sm:space-y-16">
-        <Hero />
-        <About />
-        {/* <Experience /> */}
-        <Projects />
-      </div>
+      <Hero />
+      <Projects />
+      {/* <Experience /> */}
+      <About />
     </>
   );
 }

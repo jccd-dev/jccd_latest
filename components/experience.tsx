@@ -63,7 +63,7 @@ const Experience = () => {
   return (
     <section id="experience" className="w-full">
       <div className="h-10" />
-      <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-12">
+      <div className="page-container flex flex-col gap-12">
         <div className="max-w-4xl">
           <motion.h2
             className="text-4xl xl:text-5xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty"

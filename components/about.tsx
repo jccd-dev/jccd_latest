@@ -1,83 +1,81 @@
-"use client";
+import { AvailabilityStop } from "@/components/availability";
+import {
+  ProjectStatement,
+  Reveal,
+  TextReveal,
+} from "@/components/project-motion";
 
-import { motion, useReducedMotion } from "motion/react";
-import Image from "next/image";
+const techStack = [
+  "Next.js",
+  "TypeScript",
+  "Laravel",
+  "PHP",
+  "Livewire",
+  "Tailwind CSS",
+  "PostgreSQL",
+  "MySQL",
+  "Redis",
+  "Docker",
+  "Nginx",
+  "GitHub Actions",
+  "Cloudflare",
+];
 
-const About = () => {
-  const reduceMotion = useReducedMotion();
+const rowClass =
+  "grid gap-3 border-t border-border py-6 md:grid-cols-12 md:gap-8 md:py-8";
 
-  return (
-    <section id="about" className="mt-8 w-full">
-      <div className="h-32" />
-      <div className="container mx-auto px-4 lg:px-6 flex flex-col gap-8">
-        <div className="">
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{
-              duration: reduceMotion ? 0 : 0.6,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="text-4xl xl:text-5xl font-medium tracking-tight leading-[1.05] text-foreground text-pretty max-w-7xl"
-          >
-            I{" "}
-            <span className="text-muted-foreground">enjoy building things</span>{" "}
-            that don&apos;t just work—but actually matter to the people using
-            them. Turning ideas into something{" "}
-            <span className="text-muted-foreground">
-              useful, usable, and real
-            </span>{" "}
-            is what keeps me{" "}
-            <span className="text-muted-foreground">excited.</span>
-          </motion.h2>
-        </div>
-        <motion.div
-          className="grid lg:grid-cols-12 grid-cols-1 md:grid-cols-6 gap-6"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.18 }}
-          transition={{
-            duration: reduceMotion ? 0 : 0.6,
-            delay: reduceMotion ? 0 : 0.1,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          <div className="lg:col-start-7 md:col-start-1 flex flex-col md:flex-row gap-6 md:col-span-6">
-            <div className="w-full lg:w-1/2">
-              <Image
-                src="/jcportrait.png"
-                alt="Portrait of John Carlo Digay, a freelance full-stack developer behind JccdLabs"
-                width={500}
-                height={0}
-                className="w-full h-auto object-cover rounded-sm"
-                loading="eager"
-              />
-            </div>
-            <div className="w-full lg:w-1/2 font-pp-neue-montreal text-base  tracking-tight leading-5 text-wrap flex flex-col gap-4 text-muted-foreground">
-              <p className="w-full text-left">
-                I enjoy taking ideas and turning them into working products that
-                people can actually use. Depending on the project, I may be
-                involved in everything from development and database work to
-                deployment, infrastructure, testing, and ongoing improvements.
-                The most rewarding part for me is seeing something I built make
-                a real difference whether it helps a team work more efficiently,
-                improves a business process, or simply makes a task easier for
-                the people using it.
-              </p>
-              <p>
-                I also like exploring AI, automation, and new product ideas,
-                especially when they can be used in practical ways. I try to
-                keep the things I build simple, maintainable, and flexible
-                enough to grow as the project evolves.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+const About = () => (
+  <section id="about" className="page-container pb-24 md:pb-36">
+    <div className="grid gap-x-8 gap-y-8 md:grid-cols-12 md:items-end">
+      <TextReveal
+        as="h2"
+        text="Hey"
+        className="text-[clamp(5rem,21vw,13rem)] leading-[0.86] tracking-[-0.04em] md:col-span-5"
+      >
+        <AvailabilityStop />
+      </TextReveal>
+      <div className="md:col-span-7 md:pb-3">
+        <ProjectStatement text="I enjoy building things that don't just work, but actually matter to the people using them. Turning ideas into something useful, usable, and real is what keeps me excited." />
       </div>
-      <div className="h-10"></div>
-    </section>
-  );
-};
+    </div>
+
+    <Reveal className="mt-14 md:mt-24">
+      <div className={rowClass}>
+        <h3 className="text-muted-foreground md:col-span-3">How I work</h3>
+        <div className="grid gap-5 leading-snug md:col-span-9 md:grid-cols-2 md:gap-8">
+          <p>
+            I enjoy taking ideas and turning them into working products that
+            people can actually use. Depending on the project, I may be involved
+            in everything from development and database work to deployment,
+            infrastructure, testing, and ongoing improvements. The most
+            rewarding part for me is seeing something I built make a real
+            difference whether it helps a team work more efficiently, improves a
+            business process, or simply makes a task easier for the people using
+            it.
+          </p>
+          <p>
+            I also like exploring AI, automation, and new product ideas,
+            especially when they can be used in practical ways. I try to keep
+            the things I build simple, maintainable, and flexible enough to grow
+            as the project evolves.
+          </p>
+        </div>
+      </div>
+      <div className={`${rowClass} border-b`}>
+        <h3 className="text-muted-foreground md:col-span-3">Tech stack</h3>
+        <ul className="flex flex-wrap gap-x-6 gap-y-1.5 text-xl leading-7 tracking-[-0.01em] md:col-span-9 md:text-2xl md:leading-8">
+          {techStack.map((name) => (
+            <li
+              key={name}
+              className="transition-colors duration-150 ease-out [@media(hover:hover)_and_(pointer:fine)]:hover:text-highlight"
+            >
+              {name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Reveal>
+  </section>
+);
 
 export default About;

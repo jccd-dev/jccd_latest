@@ -11,6 +11,22 @@
   inset: 0 0 auto;
   z-index: 20;
   height: 80px;
+  background: var(--background);
+  pointer-events: auto;
+  transition: background-color 240ms ease;
+}
+
+.staggered-menu-header.on-footer {
+  background: var(--color-neutral-950);
+}
+
+.staggered-menu-wrapper:not([data-open]) .on-footer :is(.sm-logo, .sm-toggle) {
+  color: white;
+}
+
+.staggered-menu-wrapper[data-open] .staggered-menu-header {
+  background: transparent;
+  pointer-events: none;
 }
 
 .sm-logo,

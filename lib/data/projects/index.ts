@@ -11,12 +11,15 @@ export type {
   ProjectText,
 } from "./types";
 
-export const projects: readonly Project[] = [
+export const clientWork: readonly Project[] = [
   eaglesNexus,
   critterHub,
-  aparador,
   vetdatalynx,
 ];
+
+export const personalWork: readonly Project[] = [aparador];
+
+export const projects: readonly Project[] = [...clientWork, ...personalWork];
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);

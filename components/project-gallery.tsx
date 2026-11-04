@@ -125,7 +125,7 @@ export function ProjectGallery({
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(min-width: 1440px) 960px, (min-width: 1024px) 70vw, 88vw"
+                  sizes="(min-width: 1024px) 780px, 88vw"
                   className="object-contain motion-safe:transition-transform motion-safe:duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.02] motion-reduce:transform-none"
                 />
               </button>

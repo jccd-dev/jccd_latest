@@ -5,6 +5,10 @@ export const aparador = {
   title: "Aparador",
   shortDescription:
     "A virtual wardrobe for organizing clothes, building outfits, planning looks, and generating AI try-ons from pieces you already own.",
+  tagline: "Outfit ideas that start with clothes you already own.",
+  audience:
+    "People who want to plan what to wear from their own wardrobe.",
+  tileColor: "#6e5a4a",
   type: "Web application / PWA",
   status: "Live",
   links: {

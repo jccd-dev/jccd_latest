@@ -1,6 +1,7 @@
 "use client";
 
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import {
   useCallback,
@@ -11,6 +12,8 @@ import {
 } from "react";
 import { ModeToggle } from "../mode-toggle";
 import "./staggered-menu.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -25,6 +28,7 @@ export default function StaggeredMenu() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const layersRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const iconRef = useRef<HTMLSpanElement>(null);
@@ -42,10 +46,9 @@ export default function StaggeredMenu() {
         panel?.querySelectorAll<HTMLElement>(".sm-panel-detail") ?? [];
       const backdrop = backdropRef.current;
 
-      // Set initial off-screen states
-      gsap.set([panel, ...Array.from(layers)], {
-        transform: "translate3d(100%, 0, 0)",
-      });
+      // Set initial off-screen states. x is zeroed because GSAP reads the
+      // stylesheet's 100% as fixed pixels, which go stale when the window resizes.
+      gsap.set([panel, ...Array.from(layers)], { x: 0, xPercent: 100 });
       gsap.set(labels, { yPercent: 120 });
       gsap.set(details, { opacity: 0, y: 16 });
       if (backdrop) {
@@ -78,9 +81,7 @@ export default function StaggeredMenu() {
     ).matches;
 
     if (reducedMotion) {
-      gsap.set([panel, ...Array.from(layers)], {
-        transform: "translate3d(100%, 0, 0)",
-      });
+      gsap.set([panel, ...Array.from(layers)], { xPercent: 100 });
       gsap.set(labels, { yPercent: 120 });
       gsap.set(details, { opacity: 0, y: 16 });
       if (backdrop) {
@@ -134,7 +135,7 @@ export default function StaggeredMenu() {
     tl.to(
       panelAndLayers,
       {
-        transform: "translate3d(100%, 0, 0)",
+        xPercent: 100,
         duration: 0.65,
         ease: "power3.inOut",
         stagger: 0.07,
@@ -208,9 +209,7 @@ export default function StaggeredMenu() {
     ).matches;
 
     if (reducedMotion) {
-      gsap.set([panel, ...Array.from(layers)], {
-        transform: "translate3d(0%, 0, 0)",
-      });
+      gsap.set([panel, ...Array.from(layers)], { xPercent: 0 });
       gsap.set(labels, { yPercent: 0 });
       gsap.set(details, { opacity: 1, y: 0 });
       if (backdrop) {
@@ -246,7 +245,7 @@ export default function StaggeredMenu() {
     tl.to(
       [...Array.from(layers), panel],
       {
-        transform: "translate3d(0%, 0, 0)",
+        xPercent: 0,
         duration: 0.75,
         ease: "power4.out",
         stagger: 0.08,
@@ -304,6 +303,20 @@ export default function StaggeredMenu() {
     }
 
     activeTimeline.current = tl;
+  }, []);
+
+  // The solid header turns black over the footer so it doesn't sit on it as a band.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const trigger = ScrollTrigger.create({
+      trigger: "#smooth-content > footer",
+      start: () => `top ${header.offsetHeight}px`,
+      // Past the page bottom: a trigger that ends at max scroll goes inactive there.
+      end: "bottom top",
+      toggleClass: { targets: header, className: "on-footer" },
+    });
+    return () => trigger.kill();
   }, []);
 
   useEffect(() => {
@@ -380,8 +393,12 @@ export default function StaggeredMenu() {
         <div className="sm-prelayer sm-prelayer-graphite" />
       </div>
 
-      <header className="staggered-menu-header" aria-label="Main navigation">
-        <div className="container mx-auto flex h-full items-center justify-between px-4 lg:px-6">
+      <header
+        ref={headerRef}
+        className="staggered-menu-header"
+        aria-label="Main navigation"
+      >
+        <div className="page-container flex h-full items-center justify-between">
           <Link
             className="sm-logo font-pp-neue-montreal"
             href="/"

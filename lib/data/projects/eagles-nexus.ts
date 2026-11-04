@@ -5,6 +5,10 @@ export const eaglesNexus = {
   title: "Eagles Nexus",
   shortDescription:
     "A membership platform for managing records, subscriptions, donations, communications, reports, and administrative access.",
+  tagline: "Member records and daily admin in one shared system.",
+  audience:
+    "Administrators and members of a membership-based organization.",
+  tileColor: "#14284b",
   type: "Web application",
   status: "In development",
   overview: [
@@ -116,9 +120,9 @@ export const eaglesNexus = {
   techStack: [
     {
       category: "Web Application",
-      technologies: ["Next.js", "Tanstack Query", "Supabase", "JavaScript"],
+      technologies: ["Next.js", "TanStack Query", "Supabase", "JavaScript"],
     },
-    { category: "Data", technologies: ["PostgresSQL", "Redis"] },
+    { category: "Data", technologies: ["PostgreSQL", "Redis"] },
     { category: "Interface", technologies: ["Tailwind CSS", "Shadcn UI"] },
     {
       category: "Delivery",

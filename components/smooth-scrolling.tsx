@@ -10,9 +10,12 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function scrollToHash(smooth: boolean) {
   const target = document.getElementById(window.location.hash.slice(1));
-  if (!target) return;
+  const smoother = ScrollSmoother.get();
+  if (!target || !smoother) return;
+  // The browser's own fragment jump scrolls the fixed wrapper, out of ScrollSmoother's reach.
+  smoother.wrapper().scrollTop = 0;
   const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 96;
-  ScrollSmoother.get()?.scrollTo(target, smooth, `top ${margin}px`);
+  smoother.scrollTo(target, smooth, `top ${margin}px`);
 }
 
 export function SmoothScrolling({ children }: { children: ReactNode }) {

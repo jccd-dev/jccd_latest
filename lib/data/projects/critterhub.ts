@@ -4,7 +4,11 @@ export const critterHub = {
   slug: "critterhub",
   title: "CritterHub",
   shortDescription:
-    "A production web application I developed, deployed, and continue to maintain for a veterinary software client.",
+    "Appointments, services, billing, and inventory for groomers and smaller veterinary clinics, developed and maintained for a veterinary software client.",
+  tagline: "Daily clinic tools without the full veterinary suite.",
+  audience:
+    "Groomers and smaller clinics that mainly need appointments, services, billing, and inventory.",
+  tileColor: "#123c2e",
   type: "Web application",
   status: "Live",
   links: {
@@ -33,32 +37,32 @@ export const critterHub = {
   ],
   features: [
     {
-      title: "Appointment Management",
+      title: "Appointment management",
       description:
         "Manage bookings, schedules, and appointment details for grooming and clinic services.",
     },
     {
-      title: "Grooming Services Management",
+      title: "Grooming services management",
       description:
         "Create and manage grooming services, pricing, and the service options offered to customers.",
     },
     {
-      title: "Billing Management",
+      title: "Billing management",
       description:
         "Handle customer charges, service payments, and billing records within the same system.",
     },
     {
-      title: "Inventory Management",
+      title: "Inventory management",
       description:
         "Track products and supplies, monitor stock levels, and keep inventory records organized.",
     },
     {
-      title: "Role-based Access Control",
+      title: "Role-based access control",
       description:
         "Control what users can access and manage based on their assigned roles and responsibilities.",
     },
     {
-      title: "Custom Landing Pages",
+      title: "Custom landing pages",
       description:
         "Provide each subscriber with a customizable public-facing page for their business and services.",
     },

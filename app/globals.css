@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-pp-neue-montreal: var(--font-pp-neue-montreal);
+  --font-sans: var(--font-neue-montreal), ui-sans-serif, system-ui, sans-serif;
+  --font-pp-neue-montreal: var(--font-sans);
+  --radius-tile: 0.875rem;
 }
 
 :root {
@@ -22,14 +22,15 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.5 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
+  --highlight: oklch(0.55 0.13 50);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.87 0 0);
+  --ring: oklch(0.145 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -61,11 +62,12 @@
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
+  --highlight: oklch(0.76 0.13 62);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --ring: oklch(0.985 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -96,6 +98,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -123,6 +126,12 @@
 @layer base {
   html {
     scrollbar-gutter: stable;
+    /* Only the Regular cut ships, so size carries hierarchy, not faux bold. */
+    font-synthesis-weight: none;
+  }
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
   }
   * {
     @apply border-border outline-ring/50;
@@ -130,6 +139,115 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@utility page-container {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* Text reveal. Padding keeps descenders and tight tracking inside the clip. */
+.word-mask {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.1em 0.05em 0.18em;
+  margin: -0.1em -0.05em -0.18em;
+}
+
+.word {
+  display: inline-block;
+}
+
+/* First-screen entrances run in CSS so they start with first paint, before hydration. */
+@media (prefers-reduced-motion: no-preference) {
+  .words-load .word {
+    animation: word-rise 750ms cubic-bezier(0.16, 1, 0.3, 1)
+      calc(100ms + var(--i) * 20ms) both;
+  }
+
+  .rise-load {
+    animation: rise 600ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms) both;
+  }
+
+  .wipe-load {
+    animation: wipe 900ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+  }
+
+  .wipe-load img {
+    animation: settle 1100ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+  }
+}
+
+@keyframes word-rise {
+  from {
+    transform: translateY(115%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes wipe {
+  from {
+    clip-path: inset(100% 0 0 0 round var(--radius-tile));
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--radius-tile));
+  }
+}
+
+@keyframes settle {
+  from {
+    scale: 1.14;
+  }
+}
+
+/* Underline that draws in from the left and leaves to the right. */
+.link-line {
+  position: relative;
+}
+
+.link-line::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -0.1em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link-line:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .wordmark path:hover {
+    fill: var(--highlight);
+    stroke: var(--highlight);
+  }
+}
+
+.link-line:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.wordmark path {
+  transition:
+    fill 200ms ease-out,
+    stroke 200ms ease-out;
 }
 
 @layer utilities {
@@ -151,47 +269,5 @@
     opacity: 0;
     transform: scale(0.95);
   }
-
-  .project-marquee-track {
-    display: flex;
-    width: max-content;
-    animation-name: project-marquee;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    will-change: transform;
-  }
-
-  .project-marquee-group {
-    display: flex;
-    flex: none;
-    gap: 0.5rem;
-    padding-right: 0.5rem;
-  }
 }
 
-@keyframes project-marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .project-marquee:hover .project-marquee-track {
-    animation-play-state: paused;
-  }
-}
-
-.project-marquee:focus-visible .project-marquee-track {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .project-marquee {
-    overflow-x: auto;
-  }
-
-  .project-marquee-track {
-    animation: none;
-    transform: none;
-  }
-}

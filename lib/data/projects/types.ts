@@ -14,6 +14,10 @@ export interface Project {
   slug: string;
   title: string;
   shortDescription: string;
+  // Selected work: the line after the name, who it is for, and the cover tile's fill.
+  tagline?: string;
+  audience?: string;
+  tileColor?: string;
   type?: string;
   status?: ProjectStatus;
   year?: string;

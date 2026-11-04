@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -10,12 +9,8 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const ppNeueMontreal = localFont({
   src: "../public/fonts/PPNeueMontreal.woff",
-  variable: "--font-pp-neue-montreal",
+  variable: "--font-neue-montreal",
   display: "swap",
-});
-
-const geistSans = Geist({
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -56,10 +51,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.className} ${ppNeueMontreal.className} antialiased`}
-      >
+    <html
+      lang="en"
+      className={ppNeueMontreal.variable}
+      suppressHydrationWarning
+    >
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -35,7 +35,7 @@ Do not change these without explicit approval:
 
 ## 3. Color Palette and Roles
 
-Use one neutral family across the full page. The portfolio currently has no chromatic brand accent, so hierarchy comes from contrast, typography, images, and motion. Do not invent an accent unless approved.
+Use one neutral family across the full page, plus two chromatic signals. **Highlight copper** (`--highlight`, matched by eye to the portrait backdrop) is the one accent: the role in the hero headline, each project name, and hover states on icons, tech names, and footer letters. Working-hours green stays a live signal only: the status dot and the full stop in `Hey.` and `Say Hello.` turn green from 8 AM to 5 PM Manila time and neutral grey otherwise. The status text is always the neutral local time, never "Available" or "Offline", so visitors in other time zones are not told he is unavailable. Project cover tiles carry each product's own flat colour (`tileColor`).
 
 ### Light theme
 
@@ -45,6 +45,7 @@ Use one neutral family across the full page. The portfolio currently has no chro
 - **Muted Surface**: `oklch(0.97 0 0)` (approximately `#F5F5F5`). Quiet interactive and grouped surfaces.
 - **Muted Ink**: `oklch(0.556 0 0)` (approximately `#737373`). Secondary copy.
 - **Border**: `oklch(0.922 0 0)` (approximately `#E5E5E5`). Structural separators and input outlines.
+- **Highlight**: `oklch(0.55 0.13 50)`. Copper, darkened to pass AA on the warm canvas.
 
 ### Dark theme
 
@@ -53,24 +54,22 @@ Use one neutral family across the full page. The portfolio currently has no chro
 - **Dark Surface**: `oklch(0.269 0 0)` (approximately `#303030`). Quiet interactive and grouped surfaces.
 - **Muted Light**: `oklch(0.708 0 0)` (approximately `#A3A3A3`). Secondary copy.
 - **Dark Border**: `oklch(0.269 0 0)` (approximately `#303030`). Structural separators and input outlines.
+- **Highlight**: `oklch(0.76 0.13 62)`. Copper, lifted for dark surfaces.
 
 ### Color rules
 
 - Respect system theme through the existing root theme provider.
-- Keep one page theme at a time. Sections must not invert independently.
+- Keep one page theme at a time. The one exception is the footer, which is always near-black (`neutral-950`) in both themes.
 - Preserve contrast hierarchy in both modes.
 - Body text must meet WCAG AA. Hero copy should target WCAG AAA.
-- If a future accent is approved, use one accent across the whole site at less than 80% saturation.
 - Never add AI-purple gradients, neon glows, mixed warm and cool gray families, or arbitrary section colors.
 
 ## 4. Typography
 
 ### Type stack
 
-- **Primary sans**: Geist. Use for navigation, major headings, controls, and high-clarity interface text.
-- **Brand and editorial sans**: PP Neue Montreal. Use for descriptive copy, metadata, project summaries, and selected display moments.
-- **Monospace**: Geist Mono. Use only for code-like values or precise technical metadata.
-- Load fonts through `next/font` or local files with `font-display: swap`.
+- **Only face**: PP Neue Montreal Regular, loaded through `next/font/local` as `--font-neue-montreal` and exposed as `font-sans`.
+- Only the Regular cut ships and `font-synthesis-weight: none` is set, so `font-medium` has no effect. Build hierarchy with size and color.
 
 ### Scale and rhythm
 
@@ -103,7 +102,7 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 
 ## 6. Layout Principles
 
-- Main content uses a centered container with `1rem` mobile gutters, `1.5rem` desktop gutters, and a maximum width near `1400px`.
+- Main content uses the `page-container` utility: centered, `1rem` mobile gutters, `1.5rem` gutters from `768px`, maximum width `1200px`.
 - Prefer CSS Grid for multi-column composition.
 - At `768px` and below, every multi-column section collapses to one column with no horizontal overflow.
 - Use `min-height: 100dvh` for viewport-height sections. Never use `100vh` or `h-screen`.
@@ -112,19 +111,17 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 - Each section needs a distinct compositional job. Do not repeat the same split-image pattern more than twice in sequence.
 - Do not use three equal feature cards. Use asymmetric grids, one strong project feature, or a two-column composition.
 - Do not add decorative crosshairs, fake dashboards, empty bento cells, or section-number labels.
+- Page order is Hero, Selected work, About, Footer.
+- The footer closes on the full-width `JCCDLABS` wordmark (outlines in `components/wordmark-letters.ts`, from `public/JCCDLABS.svg`). Each letter climbs out of the page edge over the last stretch of scroll. Above it sit `Say Hello.`, the contact action, and the Index, Elsewhere, and Local time columns.
+- Selected work gives every project its own bento, so the list can grow by adding projects. Each one has a `Name. Tagline` heading with tech tags, a `7/5` row (cover tile in `tileColor`, then description, role, audience, and `Learn more`), and a row of four feature tiles from the project's first four features. Each group opens with a slim intro band.
 
 ## 7. Hero
 
-- Use an asymmetric two-column structure on desktop: introduction and actions on the left, one real featured-project visual on the right.
-- Collapse to one column below `768px`, with the project visual after the copy.
-- Keep the headline to two lines on desktop.
-- Hero support copy is 20 words or fewer.
+- Two columns on the page grid. Left: headline with the role in highlight copper, support copy with actions, then a three-column fact strip (location, focus, latest project). Right: the full-colour portrait, running the height of the left column, with the live local-time chip on it.
+- The portrait lives here only, so the same photo does not repeat in About.
+- First-screen entrances run in CSS, not JS, so they start on first paint and never depend on hydration.
 - Keep one primary CTA and at most one secondary CTA with a distinct intent.
 - All hero actions must be visible in the initial viewport.
-- Top padding must not exceed `6rem` on desktop.
-- The hero may contain at most four text groups: headline, support copy, availability status if it conveys real state, and actions.
-- The featured visual must be a real project screenshot or generated image with fixed dimensions to prevent layout shift.
-- No scroll cue, trust strip, version label, decorative text strip, fake product UI, or gradient blob.
 
 ## 8. Navigation
 
@@ -132,7 +129,7 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 - Preserve `Experience`, `Projects`, and `About` in that order.
 - Keep the contact action and theme control on the right at desktop.
 - On mobile, use one accessible menu button with `aria-expanded`, a clear focus state, and a menu that closes after selection.
-- Keep the fixed navigation visually quiet. Use blur only when it improves separation from content beneath.
+- Keep the fixed navigation visually quiet. It has a solid `--background` fill so scrolled content never collides with the logo, and it turns footer black once the footer reaches it.
 - All interactive targets must be at least `44px` in both dimensions on touch devices.
 
 ## 9. Components
@@ -141,6 +138,7 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 
 - Primary: solid Ink in light mode and Soft White in dark mode, with inverse text.
 - Secondary: transparent or quiet surface with a visible border.
+- `ActionLink` is the main call to action: a pill with a circular arrow that swaps on hover.
 - Labels remain on one line at desktop and should use three words or fewer where possible.
 - Active feedback: translate down by `1px` or scale to `0.98`.
 - Focus state: visible three-pixel ring with WCAG-compliant contrast.
@@ -182,8 +180,8 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 ## 11. Motion and Interaction
 
 - Motion communicates hierarchy, feedback, or state change. If it has no clear purpose, omit it.
-- Use Motion for entrance, hover, and layout transitions. Reserve GSAP for real pinning or scroll-linked sequences.
-- Animate only `transform` and `opacity`.
+- Use `TextReveal` for headings (words rise out of a mask), `Reveal` for tiles, and `Parallax` for images inside a frame. GSAP drives anything tied to scroll or pointer position.
+- Animate only `transform` and `opacity`, plus `clip-path` for the one portrait wipe.
 - Use a restrained easing curve such as `[0.16, 1, 0.3, 1]` for entrances.
 - Entry duration: `0.4s` to `0.8s`. Stagger: about `0.06s` between related items.
 - Tactile action feedback should be immediate and under `0.2s`.
@@ -225,8 +223,8 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 - No fake product UI, fake metrics, fake testimonials, or generic stock identities.
 - No em dashes or en dashes.
 - No excessive gradient text.
-- No custom cursor.
-- No decorative image captions or image-overlay labels.
+- No cursor replacement. The `View project` label that trails the pointer over a cover is the only pointer-following element.
+- No decorative image captions or image-overlay labels. The live local-time chip on the portrait is functional.
 - No repeated split-header or zigzag layout rhythm.
 - No `window.addEventListener("scroll", ...)` animation loop.
 - No animation of `top`, `left`, `width`, or `height`.

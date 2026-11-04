@@ -22,13 +22,9 @@ export function ChapterNavigation({
 
     const media = gsap.matchMedia();
     media.add(
-      {
-        desktop: "(min-width: 1024px)",
-        motion: "(prefers-reduced-motion: no-preference)",
-      },
-      ({ conditions }) => {
-        if (!conditions?.motion) return;
-        const top = conditions.desktop ? 112 : 80;
+      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+      () => {
+        const top = 112;
         gsap.set(element, { position: "relative", top: 0 });
         ScrollTrigger.create({
           trigger: element,
@@ -92,22 +88,22 @@ export function ChapterNavigation({
   return (
     <aside
       ref={aside}
-      className="sticky top-20 z-20 -mx-4 self-start bg-background px-4 py-2 lg:top-28 lg:z-auto lg:m-0 lg:p-0"
+      className="lg:sticky lg:top-28 lg:self-start"
     >
       <nav aria-label="Case study chapters">
-        <p className="mb-5 hidden text-sm text-muted-foreground lg:block">
+        <p className="mb-3 text-sm text-muted-foreground lg:mb-5">
           In this project
         </p>
         <ul
           ref={navigation}
-          className="relative flex gap-5 overflow-x-auto border-b border-border lg:max-h-[calc(100dvh-10rem)] lg:flex-col lg:gap-0 lg:overflow-y-auto lg:border-b-0 lg:border-l [scrollbar-width:none]"
+          className="relative flex flex-wrap gap-x-4 lg:max-h-[calc(100dvh-10rem)] lg:flex-col lg:flex-nowrap lg:gap-0 lg:overflow-y-auto lg:border-l lg:border-border [scrollbar-width:none]"
         >
           {chapters.map(({ id, title }) => (
-            <li key={id} className="shrink-0">
+            <li key={id}>
               <a
                 href={`#${id}`}
                 aria-current={activeId === id ? "location" : undefined}
-                className={`flex min-h-11 items-center border-b-2 px-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring lg:border-b-0 lg:border-l-2 lg:px-5 ${
+                className={`flex min-h-11 items-center text-sm outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring lg:-ml-px lg:border-l-2 lg:px-5 ${
                   activeId === id
                     ? "border-foreground text-foreground"
                     : "border-transparent text-muted-foreground hover:text-foreground"

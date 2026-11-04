@@ -62,7 +62,7 @@ const Contact = () => {
 
   return (
     <section className="w-full">
-      <div className="container mx-auto px-4 pb-24 pt-32 lg:px-6 md:pt-40">
+      <div className="page-container pb-24 pt-32 md:pt-40">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-10">
           <motion.div
             className="lg:col-span-5"

@@ -5,6 +5,10 @@ export const vetdatalynx = {
   title: "VetdataLynx",
   shortDescription:
     "A veterinary clinic management platform that keeps patient care, appointments, inventory, billing, and daily operations in one system.",
+  tagline: "Every patient visit connected, from appointment to invoice.",
+  audience:
+    "Veterinary teams who keep clinical records and clinic administration together.",
+  tileColor: "#2a7a5e",
   type: "Web application",
   status: "Live",
   links: {

@@ -1,169 +1,90 @@
-"use client";
+import { ActionLink } from "@/components/action-link";
+import {
+  AvailabilityStatus,
+  AvailabilityStop,
+} from "@/components/availability";
+import { FooterWordmark } from "@/components/footer-wordmark";
+import { TextReveal } from "@/components/project-motion";
+import Link from "next/link";
 
-import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+const linkClass =
+  "inline-block rounded-xs py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950";
 
-const Footer = () => {
-  const [timeState, setTimeState] = useState({
-    timeStr: "",
-    isAvailable: false,
-  });
-  const [mounted, setMounted] = useState(false);
+const siteLinks = [
+  { href: "/#projects", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
 
-  useEffect(() => {
-    setMounted(true);
-    const updateTime = () => {
-      const phDate = new Date(
-        new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" }),
-      );
-      const hour = phDate.getHours();
-      const isAvailable = hour >= 8 && hour < 17;
-
-      const timeStr = phDate.toLocaleTimeString("en-US", {
-        hour12: true,
-        hour: "numeric",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-
-      setTimeState({
-        timeStr: `${timeStr} PH`,
-        isAvailable,
-      });
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <footer className="w-full mb-4">
-      <div className="h-10" />
-      <div className="container mx-auto px-4 lg:px-6">
-        <motion.div
-          className="bg-foreground/3 dark:bg-accent/10 border border-black/5 dark:border-white/5 rounded-sm p-6 md:p-10 backdrop-blur-sm"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+const Footer = () => (
+  <footer className="dark w-full overflow-hidden bg-neutral-950 text-white">
+    <div className="page-container pt-24 md:pt-32">
+      <div className="grid gap-10 md:grid-cols-12 md:items-end">
+        <TextReveal
+          as="h2"
+          text="Say Hello"
+          className="text-[clamp(4rem,12vw,9rem)] leading-[0.9] tracking-[-0.04em] md:col-span-8"
         >
-          {/* Top Row: Copyright and Links */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs font-pp-neue-montreal tracking-tight text-muted-foreground border-b border-black/5 dark:border-white/5 pb-8 mb-10">
-            <div className="flex items-center gap-1 group cursor-default">
-              <span>&copy; {new Date().getFullYear()}</span>
-              <span className="text-foreground font-medium transition-colors group-hover:text-primary">
-                John Carlo.
-              </span>
-              <span>All Rights Reserved.</span>
-            </div>
-          </div>
-
-          {/* Middle Content */}
-          <div className="grid md:grid-cols-2 gap-10 text-xs font-pp-neue-montreal tracking-tighter">
-            {/* Left: Availability */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  {!mounted || timeState.isAvailable ? (
-                    <>
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </>
-                  ) : (
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-500"></span>
-                  )}
-                </span>
-                <span className="text-foreground uppercase font-medium">
-                  {timeState.isAvailable ? "(Online)" : "(Offline)"} Now,{" "}
-                  {mounted ? timeState.timeStr : "--:--:--"}
-                </span>
-              </div>
-              <div className="text-muted-foreground leading-relaxed font-light">
-                <p>Mon to Fri, 8AM - 4PM</p>
-                <p>Sat, 10AM - 2PM</p>
-                <p>Sundays & Bank Holidays, Closed</p>
-              </div>
-            </div>
-
-            {/* Right: Location */}
-            <div className="flex flex-col md:items-end md:text-right gap-2 font-light">
-              <p className="text-muted-foreground leading-relaxed">
-                Based in{" "}
-                <span className="text-foreground font-normal">
-                  Camarines Sur, Bicol
-                </span>
-                ,<br />
-                <span className="text-foreground font-normal">
-                  Philippines, SE Asia
-                </span>
-              </p>
-              <p className="text-muted-foreground font-mono text-[10px] mt-2 opacity-60">
-                13°43′36″N, 123°17′38″E
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom Large SVG */}
-          <motion.div
-            className="mt-20 w-full overflow-hidden select-none touch-none"
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <svg
-              className="w-full h-auto fill-foreground opacity-[0.08] dark:opacity-[0.12] transition-opacity duration-700 hover:opacity-100 cursor-help"
-              viewBox="-2 14 398.72 64.32"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g
-                id="svgGroup"
-                strokeLinecap="round"
-                fillRule="nonzero"
-                strokeWidth="0.5"
-              >
-                <g id="line-0">
-                  <path
-                    id="char-0-0"
-                    d="M18.080 76.320Q9.200 76.320 5.320 71.040Q1.440 65.760 1.440 57.760L1.440 57.760L1.440 56.160L8.640 56.160L8.640 57.760Q8.640 61.680 9.320 64.280Q10 66.880 12.080 68.400Q14.160 69.920 18.080 69.920L18.080 69.920Q23.840 69.920 25.720 66.840Q27.600 63.760 27.600 57.760L27.600 57.760L27.600 18.000L34.800 18.000L34.800 57.760Q34.800 65.760 30.880 71.040Q26.960 76.320 18.080 76.320L18.080 76.320Z"
-                  />
-                  <path
-                    id="char-0-1"
-                    d="M68.420 76.320Q60.660 76.320 54.660 72.480Q48.660 68.640 45.300 61.880Q41.940 55.120 41.940 46.560L41.940 46.560Q41.940 38.000 45.300 31.240Q48.660 24.480 54.660 20.680Q60.660 16.880 68.420 16.880L68.420 16.880Q75.220 16.880 80.500 19.560Q85.780 22.240 88.900 26.800Q92.020 31.360 92.740 36.880L92.740 36.880L85.220 36.880Q84.180 31.520 80.300 27.400Q76.420 23.280 68.420 23.280L68.420 23.280Q61.940 23.280 57.700 26.560Q53.460 29.840 51.460 35.120Q49.460 40.400 49.460 46.560L49.460 46.560Q49.460 52.720 51.460 58.040Q53.460 63.360 57.700 66.640Q61.940 69.920 68.420 69.920L68.420 69.920Q76.660 69.920 80.740 65.400Q84.820 60.880 85.220 54.560L85.220 54.560L92.740 54.560Q92.100 60.880 88.980 65.840Q85.860 70.800 80.580 73.560Q75.300 76.320 68.420 76.320L68.420 76.320Z"
-                  />
-                  <path
-                    id="char-0-2"
-                    d="M123.160 76.320Q115.400 76.320 109.400 72.480Q103.400 68.640 100.040 61.880Q96.680 55.120 96.680 46.560L96.680 46.560Q96.680 38.000 100.040 31.240Q103.400 24.480 109.400 20.680Q115.400 16.880 123.160 16.880L123.160 16.880Q129.960 16.880 135.240 19.560Q140.520 22.240 143.640 26.800Q146.760 31.360 147.480 36.880L147.480 36.880L139.960 36.880Q138.920 31.520 135.040 27.400Q131.160 23.280 123.160 23.280L123.160 23.280Q116.680 23.280 112.440 26.560Q108.200 29.840 106.200 35.120Q104.200 40.400 104.200 46.560L104.200 46.560Q104.200 52.720 106.200 58.040Q108.200 63.360 112.440 66.640Q116.680 69.920 123.160 69.920L123.160 69.920Q131.400 69.920 135.480 65.400Q139.560 60.880 139.960 54.560L139.960 54.560L147.480 54.560Q146.840 60.880 143.720 65.840Q140.600 70.800 135.320 73.560Q130.040 76.320 123.160 76.320L123.160 76.320Z"
-                  />
-                  <path
-                    id="char-0-3"
-                    d="M154.300 75.200L154.300 18.000L175.020 18.000Q182.940 18.000 188.660 21.320Q194.380 24.640 197.420 31.080Q200.460 37.520 200.460 46.640L200.460 46.640Q200.460 60.320 193.700 67.760Q186.940 75.200 175.020 75.200L175.020 75.200L154.300 75.200ZM161.500 68.800L175.020 68.800Q192.940 68.800 192.940 46.640L192.940 46.640Q192.940 24.400 175.020 24.400L175.020 24.400L161.500 24.400L161.500 68.800Z"
-                  />
-                  <path
-                    id="char-0-4"
-                    d="M208.080 75.200L208.080 18.000L215.280 18.000L215.280 68.800L245.280 68.800L245.280 75.200L208.080 75.200Z"
-                  />
-                  <path
-                    id="char-0-5"
-                    d="M245.540 75.200L266.660 18.000L274.740 18.000L296.020 75.200L288.260 75.200L283.220 60.880L258.020 60.880L252.980 75.200L245.540 75.200ZM260.420 54.480L280.900 54.480L270.740 24.640L270.580 24.640L260.420 54.480Z"
-                  />
-                  <path
-                    id="char-0-6"
-                    d="M300.920 75.200L300.920 18.000L323.960 18.000Q332.680 18.000 337.680 21.880Q342.680 25.760 342.680 32.400L342.680 32.400Q342.680 41.200 333.800 44.240L333.800 44.240L333.800 44.400Q338.680 45.200 341.800 48.840Q344.920 52.480 344.920 58.560L344.920 58.560Q344.920 66.400 339.720 70.800Q334.520 75.200 325.560 75.200L325.560 75.200L300.920 75.200ZM308.120 68.800L325.960 68.800Q337.400 68.800 337.400 58.560L337.400 58.560Q337.400 53.920 334.720 51.120Q332.040 48.320 327.560 48.320L327.560 48.320L308.120 48.320L308.120 68.800ZM308.120 41.920L324.760 41.920Q330.520 41.920 332.840 39.680Q335.160 37.440 335.160 33.200L335.160 33.200Q335.160 29.120 332.760 26.760Q330.360 24.400 325.560 24.400L325.560 24.400L308.120 24.400L308.120 41.920Z"
-                  />
-                  <path
-                    id="char-0-7"
-                    d="M373.340 76.320Q366.220 76.320 360.700 73.880Q355.180 71.440 351.940 66.880Q348.700 62.320 348.300 56.000L348.300 56.000L355.820 56.000Q357.260 70.000 373.020 70.000L373.020 70.000Q380.220 70.000 383.220 67.240Q386.220 64.480 386.220 59.600L386.220 59.600Q386.220 55.920 384.620 53.920Q383.020 51.920 380.140 50.840Q377.260 49.760 371.180 48.240L371.180 48.240Q370.620 48.160 369.500 47.840L369.500 47.840Q363.660 46.400 359.860 44.880Q356.060 43.360 353.380 40.240Q350.700 37.120 350.700 32.000L350.700 32.000Q350.700 25.040 355.820 20.960Q360.940 16.880 370.060 16.880L370.060 16.880Q379.740 16.880 385.460 21.600Q391.180 26.320 391.900 34.960L391.900 34.960L384.380 34.960Q383.580 29.040 380.220 26.120Q376.860 23.200 370.140 23.200L370.140 23.200Q364.220 23.200 361.220 25.360Q358.220 27.520 358.220 31.680L358.220 31.680Q358.220 35.040 360.100 36.960Q361.980 38.880 364.700 39.840Q367.420 40.800 372.460 42.000L372.460 42.000Q379.660 43.680 383.900 45.320Q388.140 46.960 390.940 50.320Q393.740 53.680 393.740 59.360L393.740 59.360Q393.740 66.880 388.620 71.600Q383.500 76.320 373.340 76.320L373.340 76.320Z"
-                  />
-                </g>
-              </g>
-            </svg>
-          </motion.div>
-        </motion.div>
+          <AvailabilityStop />
+        </TextReveal>
+        <div className="flex flex-col items-start gap-5 md:col-span-4">
+          <p className="max-w-sm text-pretty text-xl leading-snug">
+            Have a system, product, or idea to build? Tell me about it and
+            I&apos;ll get back to you.
+          </p>
+          <ActionLink href="/contact">Let&apos;s Work Together</ActionLink>
+        </div>
       </div>
-    </footer>
-  );
-};
+
+      <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/15 pt-6 md:mt-24 md:grid-cols-12">
+        <nav aria-label="Footer" className="md:col-span-4">
+          <h3 className="text-sm text-neutral-400">Index</h3>
+          <ul className="mt-1.5 text-2xl tracking-[-0.02em]">
+            {siteLinks.map(({ href, label }) => (
+              <li key={href}>
+                <Link href={href} className={linkClass}>
+                  <span className="link-line">{label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="md:col-span-4">
+          <h3 className="text-sm text-neutral-400">Elsewhere</h3>
+          <p className="mt-1.5 text-2xl tracking-[-0.02em]">
+            <a
+              href="https://github.com/jccd-dev"
+              target="_blank"
+              rel="noreferrer"
+              className={linkClass}
+            >
+              <span className="link-line">GitHub</span>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </p>
+        </div>
+        <div className="col-span-2 md:col-span-4">
+          <h3 className="text-sm text-neutral-400">Local time</h3>
+          <p className="mt-3">
+            <AvailabilityStatus />
+          </p>
+          <p className="mt-1 text-neutral-400">
+            Camarines Sur, Bicol, Philippines
+            <br />
+            13°43′36″N, 123°17′38″E
+          </p>
+        </div>
+      </div>
+
+      <p className="mt-16 text-sm text-neutral-400 md:mt-24">
+        &copy; {new Date().getFullYear()} John Carlo. All Rights Reserved.
+      </p>
+    </div>
+
+    <div className="mt-4 px-4 pb-4 md:px-6 md:pb-6">
+      <FooterWordmark />
+    </div>
+  </footer>
+);
 
 export default Footer;
