@@ -70,39 +70,45 @@ export const critterHub = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574535/mockup_1_lvod90.png",
-      alt: "CritterHub screenshot 1",
-      title: "CritterHub Mockup 1",
-      description: "A mockup of the CritterHub web application",
+      alt: "Critter Hub pet grooming management software landing page, reports dashboard and mobile dashboard shown together",
+      title: "Landing page and dashboards",
+      description:
+        "Critter Hub's landing page, financial reports and mobile dashboard for pet grooming and pet-care clinics.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574536/mockup_2_kj21wn.png",
-      alt: "CritterHub screenshot 2",
-      title: "CritterHub Mockup 2",
-      description: "A mockup of the CritterHub web application",
+      alt: "Three Critter Hub mobile screens: the studio dashboard, an inventory item detail page and the landing page",
+      title: "Mobile screens",
+      description:
+        "The dashboard, inventory item details and landing page, all designed for phones.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574536/mockup_3_tw9xbf.png",
-      alt: "CritterHub screenshot 3",
-      title: "CritterHub Mockup 3",
-      description: "A mockup of the CritterHub web application",
+      alt: "Critter Hub landing page settings with a live preview, beside the monthly financial reports page",
+      title: "Landing page settings",
+      description:
+        "Teams customise their public booking page with a live preview, and track monthly financials.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574537/mockup_4_cowxi6.png",
-      alt: "CritterHub screenshot 4",
-      title: "CritterHub Mockup 4",
-      description: "A mockup of the CritterHub web application",
+      alt: "Critter Hub landing page in a browser, headline “keeps every pet visit on track” with a Today at the clinic appointment panel",
+      title: "Landing page",
+      description:
+        "The public landing page shows today's appointments and invites grooming teams to start free.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574539/mockup_5_egioow.png",
-      alt: "CritterHub screenshot 5",
-      title: "CritterHub Mockup 5",
-      description: "A mockup of the CritterHub web application",
+      alt: "Critter Hub inventory item details page on mobile showing SKU, selling price, stock quantity and unit",
+      title: "Inventory item details",
+      description:
+        "An inventory item with its SKU, price, stock and unit, readable on a phone.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574538/mockup_6_cois9c.png",
-      alt: "CritterHub screenshot 6",
-      title: "CritterHub Mockup 6",
-      description: "A mockup of the CritterHub web application",
+      alt: "Critter Hub studio dashboard on a laptop and phone showing appointments, completed visits, unassigned bookings and paid sales",
+      title: "Studio dashboard",
+      description:
+        "The dashboard summarises today's appointments, workload and paid sales on desktop and mobile.",
     },
   ],
   techStack: [

@@ -81,39 +81,45 @@ export const aparador = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_1_akpvam.png",
-      alt: "Aparador screenshot 1",
-      title: "Aparador Mockup 1",
-      description: "A mockup of the Aparador web application",
+      alt: "Aparador landing page with the headline “See the outfit on you before it becomes a mistake”, an AI virtual try-on app preview and a Create First Look button",
+      title: "Landing page",
+      description:
+        "Aparador's landing page introduces AI virtual try-on, with a Create First Look call to action and an install prompt.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_2_ednjbp.png",
-      alt: "Aparador screenshot 2",
-      title: "Aparador Mockup 2",
-      description: "A mockup of the Aparador web application",
+      alt: "Aparador wardrobe page on desktop and mobile showing a searchable grid of clothing items filtered by category and type",
+      title: "Your Wardrobe",
+      description:
+        "The wardrobe lists saved garments in a searchable, filterable grid, on both desktop and mobile.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_3_pazgq7.png",
-      alt: "Aparador screenshot 3",
-      title: "Aparador Mockup 3",
-      description: "A mockup of the Aparador web application",
+      alt: "Aparador Generate Outfit screen on mobile with a default model photo and empty slots for wardrobe items",
+      title: "Generate Outfit (mobile)",
+      description:
+        "The mobile outfit generator shows the default model and a Look slot set where garments are added.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_4_snwq91.png",
-      alt: "Aparador screenshot 4",
-      title: "Aparador Mockup 4",
-      description: "A mockup of the Aparador web application",
+      alt: "Three Aparador mobile screens: wardrobe grid, Generate Outfit with a model photo, and an Outfit Planner calendar",
+      title: "Wardrobe, Generate and Planner",
+      description:
+        "The mobile app keeps wardrobe, outfit generation and the outfit planner one tap apart in the bottom navigation.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_5_suzofu.png",
-      alt: "Aparador screenshot 5",
-      title: "Aparador Mockup 5",
-      description: "A mockup of the Aparador web application",
+      alt: "Aparador Generate Outfit screen on desktop with model photo, wardrobe item slots, generation model and resolution options, and a credit cost summary",
+      title: "Generate Outfit (desktop)",
+      description:
+        "Users pick garments, a generation model and a resolution, and see the credit cost before generating.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573912/mockup_6_fpjkjn.png",
-      alt: "Aparador screenshot 6",
-      title: "Aparador Mockup 6",
-      description: "A mockup of the Aparador web application",
+      alt: "Aparador Outfit Planner calendar on desktop and mobile beside the landing page, for scheduling saved outfits with reminders",
+      title: "Outfit Planner",
+      description:
+        "Saved looks can be scheduled on a calendar, with push reminders ahead of the planned time.",
     },
   ],
   techStack: [

@@ -41,9 +41,10 @@ export const ajmpInventory = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1754572366/Screenshot_2025-08-07_13-11-51_ynxm0z.png",
-      alt: "AJ&P inventory and order management interface",
-      title: "Inventory operations",
-      description: "Centralized inventory and order information for veterinary product distribution.",
+      alt: "AJ&P client dashboard showing total orders, pending orders, quick actions and recent orders for a veterinary clinic",
+      title: "Client dashboard",
+      description:
+        "Clinics see their orders, payment status and quick actions in one place.",
     },
   ],
   techStack: [

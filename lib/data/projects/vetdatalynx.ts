@@ -71,31 +71,31 @@ export const vetdatalynx = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_1_edqjor.png",
-      alt: "VetdataLynx interface screenshot 1",
-      title: "Landing Page",
+      alt: "VetdataLynx landing page, “Elevate Your Veterinary Clinic with Seamless Tools”, with a Book a Demo button and a dashboard preview",
+      title: "Landing page",
       description:
-        "Vetdatalynx.com landing page with a login form and a brief overview of the application.",
+        "The VetdataLynx landing page with a login, a demo booking button and an overview of the clinic management tools.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_4_gb9a0g.png",
-      alt: "VetdataLynx interface screenshot 2",
+      alt: "VetdataLynx dashboard on desktop and mobile with sales summary, top services chart, inventory and appointment counts",
       title: "Dashboard and Inventory",
       description:
-        "One of the operational views used for managing veterinary clinic records and workflows.",
+        "The dashboard shows sales, top services, inventory and appointments for a veterinary clinic.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_2_i1clly.png",
-      alt: "VetdataLynx interface screenshot 3",
-      title: "Usable Forms and Reports",
+      alt: "VetdataLynx transaction sales report and inventory items list for veterinary clinic management",
+      title: "Reports and Inventory",
       description:
-        "One of the operational views used for managing veterinary clinic records and workflows.",
+        "Sales trends, business performance reports and the inventory item list.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_3_kia773.png",
-      alt: "VetdataLynx interface screenshot 4",
-      title: "Desktop and Mobile",
+      alt: "VetdataLynx usable forms page with printable veterinary consent and waiver forms, beside the clinic dashboard",
+      title: "Usable Forms",
       description:
-        "VetDataLynx is designed to work on both desktop and mobile devices, so clinic staff can access the application from anywhere.",
+        "Ready-made clinic forms such as consent and waiver documents, generated with or without data.",
     },
   ],
   techStack: [

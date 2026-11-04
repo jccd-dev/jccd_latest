@@ -42,9 +42,10 @@ export const whisperNote = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1750581312/scrnli_V4oqAfbFhEVa2d_lainf7.png",
-      alt: "Whisper Note message builder interface",
-      title: "Message builder",
-      description: "Voice and text input are transformed into a structured message for review.",
+      alt: "Whisper Note landing page with a starry dark background and buttons to write a message from me or send to someone",
+      title: "Landing page",
+      description:
+        "Whisper Note invites visitors to read a message or send a kind note to someone special.",
     },
   ],
   techStack: [

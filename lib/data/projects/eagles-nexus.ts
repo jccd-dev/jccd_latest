@@ -82,39 +82,45 @@ export const eaglesNexus = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_1_fpciqh.png",
-      alt: "Eagles Nexus screenshot 1",
-      title: "Eagles Nexus Mockup 1",
-      description: "A mockup of the Eagles Nexus web application",
+      alt: "Eagles Nexus landing page for FOE Philippines with the headline “Find trusted services. Keep the network within reach.” and a Join Eagles Nexus button",
+      title: "Landing page",
+      description:
+        "The public site for FOE Philippines members, with a service directory and a join call to action.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_2_ourmrj.png",
-      alt: "Eagles Nexus screenshot 2",
-      title: "Eagles Nexus Mockup 2",
-      description: "A mockup of the Eagles Nexus web application",
+      alt: "Three Eagles Nexus mobile screens: landing page, community clubs directory and member marketplace listings",
+      title: "Mobile experience",
+      description:
+        "Landing page, clubs directory and marketplace, adapted for phones.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_3_wymg8l.png",
-      alt: "Eagles Nexus screenshot 3",
-      title: "Eagles Nexus Mockup 3",
-      description: "A mockup of the Eagles Nexus web application",
+      alt: "Eagles Nexus landing page behind the Donations and Treasury dashboard showing verified donations, usage ledger and balance",
+      title: "Donations and treasury",
+      description:
+        "Moderators verify donations, record fund usage and see the remaining balance.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574461/mockup_6_l4jbhy.png",
-      alt: "Eagles Nexus screenshot 4",
-      title: "Eagles Nexus Mockup 4",
-      description: "A mockup of the Eagles Nexus web application",
+      alt: "Eagles Nexus campaign details page on mobile showing scope, schedule, eligible regions and how to donate",
+      title: "Campaign details",
+      description:
+        "A campaign shows its schedule, eligible regions and donation instructions.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574461/mockup_4_cls1hx.png",
-      alt: "Eagles Nexus screenshot 5",
-      title: "Eagles Nexus Mockup 5",
-      description: "A mockup of the Eagles Nexus web application",
+      alt: "Eagles Nexus Donations and Treasury dashboard on a tablet beside campaign details and marketplace screens on phones",
+      title: "Member and moderator portal",
+      description:
+        "Moderator tools and member screens share one responsive portal.",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574462/mockup_5_o8po9r.png",
-      alt: "Eagles Nexus screenshot 6",
-      title: "Eagles Nexus Mockup 6",
-      description: "A mockup of the Eagles Nexus web application",
+      alt: "Eagles Nexus landing page on desktop and mobile beside the clubs directory on a phone",
+      title: "Responsive landing page",
+      description:
+        "The landing page and clubs directory across desktop and mobile screen sizes.",
     },
   ],
   techStack: [
