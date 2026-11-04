@@ -5,7 +5,15 @@ import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScrolling } from "@/components/smooth-scrolling";
 import localFont from "next/font/local";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import {
+  OG_IMAGE,
+  SITE_BRAND,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  siteGraph,
+} from "@/lib/seo";
 
 const ppNeueMontreal = localFont({
   src: "../public/fonts/PPNeueMontreal.woff",
@@ -18,7 +26,7 @@ export const metadata: Metadata = {
 
   title: {
     default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
+    template: `%s | ${SITE_BRAND}`,
   },
 
   description: SITE_DESCRIPTION,
@@ -32,16 +40,15 @@ export const metadata: Metadata = {
     type: "website",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    images: ["/jcportrait.png"],
+    siteName: SITE_BRAND,
+    images: [OG_IMAGE],
   },
 
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ["/jcportrait.png"],
+    images: [OG_IMAGE],
   },
 };
 
@@ -57,6 +64,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
+        <JsonLd data={siteGraph} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

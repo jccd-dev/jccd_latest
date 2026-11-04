@@ -81,37 +81,37 @@ export const aparador = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_1_akpvam.png",
-      alt: "Aparador mockup 1",
+      alt: "Aparador screenshot 1",
       title: "Aparador Mockup 1",
       description: "A mockup of the Aparador web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_2_ednjbp.png",
-      alt: "Aparador mockup 2",
+      alt: "Aparador screenshot 2",
       title: "Aparador Mockup 2",
       description: "A mockup of the Aparador web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_3_pazgq7.png",
-      alt: "Aparador mockup 3",
+      alt: "Aparador screenshot 3",
       title: "Aparador Mockup 3",
       description: "A mockup of the Aparador web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_4_snwq91.png",
-      alt: "Aparador mockup 4",
+      alt: "Aparador screenshot 4",
       title: "Aparador Mockup 4",
       description: "A mockup of the Aparador web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573911/mockup_5_suzofu.png",
-      alt: "Aparador mockup 5",
+      alt: "Aparador screenshot 5",
       title: "Aparador Mockup 5",
       description: "A mockup of the Aparador web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788573912/mockup_6_fpjkjn.png",
-      alt: "Aparador mockup 6",
+      alt: "Aparador screenshot 6",
       title: "Aparador Mockup 6",
       description: "A mockup of the Aparador web application",
     },

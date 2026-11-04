@@ -5,10 +5,14 @@ import {
 } from "@/components/availability";
 import { FooterWordmark } from "@/components/footer-wordmark";
 import { TextReveal } from "@/components/project-motion";
+import { SocialLinks } from "@/components/social-links";
 import Link from "next/link";
 
 const linkClass =
   "inline-block rounded-xs py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950";
+
+const iconLinkClass =
+  "inline-flex size-11 items-center justify-center rounded-xs outline-none transition-opacity hover:opacity-60 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transition-none";
 
 const siteLinks = [
   { href: "/#projects", label: "Work" },
@@ -51,17 +55,10 @@ const Footer = () => (
         </nav>
         <div className="md:col-span-4">
           <h3 className="text-sm text-neutral-400">Elsewhere</h3>
-          <p className="mt-1.5 text-2xl tracking-[-0.02em]">
-            <a
-              href="https://github.com/jccd-dev"
-              target="_blank"
-              rel="noreferrer"
-              className={linkClass}
-            >
-              <span className="link-line">GitHub</span>
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </p>
+          <SocialLinks
+            className="-ml-2.5 mt-0.5 flex flex-wrap items-center"
+            linkClassName={iconLinkClass}
+          />
         </div>
         <div className="col-span-2 md:col-span-4">
           <h3 className="text-sm text-neutral-400">Local time</h3>

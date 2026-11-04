@@ -219,10 +219,26 @@
   gap: 1.25rem;
 }
 
-.sm-panel-links > a {
+.sm-socials {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 -0.625rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sm-panel-links a {
   color: var(--muted-foreground);
   text-decoration: none;
   transition: color 180ms ease;
+}
+
+.sm-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -230,7 +246,7 @@
     color: var(--muted-foreground);
   }
 
-  .sm-panel-links > a:hover {
+  .sm-panel-links a:hover {
     color: var(--foreground);
   }
 
@@ -283,7 +299,7 @@
   .sm-logo,
   .sm-toggle,
   .sm-panel-item-label,
-  .sm-panel-links > a {
+  .sm-panel-links a {
     transition: none;
   }
 }

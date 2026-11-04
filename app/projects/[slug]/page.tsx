@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { JsonLd } from "@/components/json-ld";
 import { ProjectDetails } from "@/components/project-details";
 import { getProjectBySlug, projects } from "@/lib/data/projects";
+import { ogImageFor, pageMetadata, SITE_URL } from "@/lib/seo";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -20,15 +22,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   const screenshot = project.screenshots[0];
 
-  return {
-    title: `${project.title} | Projects`,
+  return pageMetadata({
+    path: `/projects/${slug}`,
+    title: `${project.title} case study`,
     description: project.shortDescription,
-    openGraph: {
-      title: `${project.title} | Projects`,
-      description: project.shortDescription,
-      images: screenshot ? [{ url: screenshot.src, alt: screenshot.alt }] : undefined,
-    },
-  };
+    image: screenshot
+      ? { url: ogImageFor(screenshot.src), alt: screenshot.alt, width: 1200 }
+      : undefined,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -37,5 +38,36 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project) notFound();
 
-  return <ProjectDetails project={project} />;
+  const url = `${SITE_URL}/projects/${project.slug}`;
+  const screenshot = project.screenshots[0];
+
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+                { "@type": "ListItem", position: 2, name: project.title, item: url },
+              ],
+            },
+            {
+              "@type": "CreativeWork",
+              "@id": `${url}#work`,
+              name: project.title,
+              description: project.shortDescription,
+              url,
+              ...(screenshot ? { image: ogImageFor(screenshot.src) } : {}),
+              ...(project.year ? { dateCreated: project.year } : {}),
+              author: { "@id": `${SITE_URL}/#person` },
+            },
+          ],
+        }}
+      />
+      <ProjectDetails project={project} />
+    </>
+  );
 }

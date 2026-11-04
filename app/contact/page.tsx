@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Contact from "@/components/contact";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact | John Carlo Digay Portfolio",
+export const metadata = pageMetadata({
+  path: "/contact",
+  title: "Contact",
   description:
-    "Get in touch with John Carlo Digay about full-stack web development projects and freelance work.",
-};
+    "Tell John Carlo Digay about your web application or business system project. Freelance full-stack developer working remotely from the Philippines.",
+});
 
 export default function ContactPage() {
   return <Contact />;

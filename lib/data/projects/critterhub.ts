@@ -70,37 +70,37 @@ export const critterHub = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574535/mockup_1_lvod90.png",
-      alt: "Criter Hub mockup 1",
+      alt: "CritterHub screenshot 1",
       title: "CritterHub Mockup 1",
       description: "A mockup of the CritterHub web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574536/mockup_2_kj21wn.png",
-      alt: "Criter Hub mockup 2",
+      alt: "CritterHub screenshot 2",
       title: "CritterHub Mockup 2",
       description: "A mockup of the CritterHub web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574536/mockup_3_tw9xbf.png",
-      alt: "Criter Hub mockup 3",
+      alt: "CritterHub screenshot 3",
       title: "CritterHub Mockup 3",
       description: "A mockup of the CritterHub web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574537/mockup_4_cowxi6.png",
-      alt: "Criter Hub mockup 4",
+      alt: "CritterHub screenshot 4",
       title: "CritterHub Mockup 4",
       description: "A mockup of the CritterHub web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574539/mockup_5_egioow.png",
-      alt: "Criter Hub mockup 5",
+      alt: "CritterHub screenshot 5",
       title: "CritterHub Mockup 5",
       description: "A mockup of the CritterHub web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574538/mockup_6_cois9c.png",
-      alt: "Criter Hub mockup 6",
+      alt: "CritterHub screenshot 6",
       title: "CritterHub Mockup 6",
       description: "A mockup of the CritterHub web application",
     },

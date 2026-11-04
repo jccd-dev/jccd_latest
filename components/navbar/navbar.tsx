@@ -11,6 +11,7 @@ import {
   useState,
 } from "react";
 import { ModeToggle } from "../mode-toggle";
+import { SocialLinks } from "../social-links";
 import "./staggered-menu.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -457,13 +458,7 @@ export default function StaggeredMenu() {
             Let&apos;s Work Together
           </Link>
           <div className="sm-panel-links sm-panel-detail">
-            <a
-              href="https://github.com/jccd-dev"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
+            <SocialLinks className="sm-socials" />
             <span className="sm-theme">
               <span className="sr-only">Theme</span>
               <ModeToggle />

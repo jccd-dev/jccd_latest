@@ -70,6 +70,7 @@ const Hero = () => (
       <Parallax className="absolute inset-x-0 -inset-y-[7%]">
         <Image
           src="/jcportrait.jpg"
+          unoptimized
           alt="Portrait of John Carlo Digay, a freelance full-stack developer behind JccdLabs"
           fill
           priority

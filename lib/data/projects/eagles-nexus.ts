@@ -82,37 +82,37 @@ export const eaglesNexus = {
   screenshots: [
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_1_fpciqh.png",
-      alt: "Eagles Nexus mockup 1",
+      alt: "Eagles Nexus screenshot 1",
       title: "Eagles Nexus Mockup 1",
       description: "A mockup of the Eagles Nexus web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_2_ourmrj.png",
-      alt: "Eagles Nexus mockup 2",
+      alt: "Eagles Nexus screenshot 2",
       title: "Eagles Nexus Mockup 2",
       description: "A mockup of the Eagles Nexus web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574460/mockup_3_wymg8l.png",
-      alt: "Eagles Nexus mockup 3",
+      alt: "Eagles Nexus screenshot 3",
       title: "Eagles Nexus Mockup 3",
       description: "A mockup of the Eagles Nexus web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574461/mockup_6_l4jbhy.png",
-      alt: "Eagles Nexus mockup 4",
+      alt: "Eagles Nexus screenshot 4",
       title: "Eagles Nexus Mockup 4",
       description: "A mockup of the Eagles Nexus web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574461/mockup_4_cls1hx.png",
-      alt: "Eagles Nexus mockup 5",
+      alt: "Eagles Nexus screenshot 5",
       title: "Eagles Nexus Mockup 5",
       description: "A mockup of the Eagles Nexus web application",
     },
     {
       src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1788574462/mockup_5_o8po9r.png",
-      alt: "Eagles Nexus mockup 6",
+      alt: "Eagles Nexus screenshot 6",
       title: "Eagles Nexus Mockup 6",
       description: "A mockup of the Eagles Nexus web application",
     },
