@@ -69,7 +69,7 @@ const Hero = () => (
     <div className="wipe-load relative aspect-square overflow-hidden rounded-tile bg-[#8a4a1f] sm:col-span-5 sm:aspect-auto sm:min-h-96 lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-1 lg:aspect-auto lg:min-h-[min(40rem,calc(100dvh-10rem))]">
       <Parallax className="absolute inset-x-0 -inset-y-[7%]">
         <Image
-          src="/jcportrait.jpg"
+          src="/jcportrait.webp"
           unoptimized
           alt="Portrait of John Carlo Digay, a freelance full-stack developer behind JccdLabs"
           fill
