@@ -70,14 +70,14 @@ export const vetdatalynx = {
   ],
   screenshots: [
     {
-      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_1_edqjor.png",
+      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1793958316/Vetdatalynx_5_aliye4.png",
       alt: "VetdataLynx landing page, “Elevate Your Veterinary Clinic with Seamless Tools”, with a Book a Demo button and a dashboard preview",
       title: "Landing page",
       description:
         "The VetdataLynx landing page with a login, a demo booking button and an overview of the clinic management tools.",
     },
     {
-      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1790337967/vetdatalynx_4_gb9a0g.png",
+      src: "https://res.cloudinary.com/df3ak7hgk/image/upload/v1793958317/Vetdatalynx_6_uwloqd.png",
       alt: "VetdataLynx dashboard on desktop and mobile with sales summary, top services chart, inventory and appointment counts",
       title: "Dashboard and Inventory",
       description:
