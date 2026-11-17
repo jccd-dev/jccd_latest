@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScrolling } from "@/components/smooth-scrolling";
 import localFont from "next/font/local";
 import { JsonLd } from "@/components/json-ld";
+import { introScript, PageTransition } from "@/components/page-transition";
 import {
   OG_IMAGE,
   SITE_BRAND,
@@ -64,6 +65,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
         <JsonLd data={siteGraph} />
         <ThemeProvider
           attribute="class"
@@ -71,6 +73,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <PageTransition />
           <Navbar />
           <SmoothScrolling>
             <main>{children}</main>

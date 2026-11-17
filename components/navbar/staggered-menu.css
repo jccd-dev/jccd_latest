@@ -11,22 +11,11 @@
   inset: 0 0 auto;
   z-index: 20;
   height: 80px;
-  background: var(--background);
-  pointer-events: auto;
-  transition: background-color 240ms ease;
-}
-
-.staggered-menu-header.on-footer {
-  background: var(--color-neutral-950);
+  pointer-events: none;
 }
 
 .staggered-menu-wrapper:not([data-open]) .on-footer :is(.sm-logo, .sm-toggle) {
   color: white;
-}
-
-.staggered-menu-wrapper[data-open] .staggered-menu-header {
-  background: transparent;
-  pointer-events: none;
 }
 
 .sm-logo,
@@ -61,9 +50,12 @@
 .sm-logo:focus-visible,
 .sm-toggle:focus-visible,
 .staggered-menu-panel a:focus-visible {
-  border-radius: 2px;
   outline: 3px solid currentColor;
   outline-offset: 5px;
+}
+
+.staggered-menu-panel a:focus-visible {
+  border-radius: 2px;
 }
 
 .sm-toggle-text-wrap {

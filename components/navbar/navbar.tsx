@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Projects", href: "/work" },
   { label: "About", href: "/#about" },
   { label: "Say Hello", href: "/contact" },
 ] as const;
@@ -306,7 +306,14 @@ export default function StaggeredMenu() {
     activeTimeline.current = tl;
   }, []);
 
-  // The solid header turns black over the footer so it doesn't sit on it as a band.
+  // A page transition has covered the screen: finish closing out of sight.
+  useEffect(() => {
+    const finish = () => activeTimeline.current?.progress(1);
+    window.addEventListener("page-covered", finish);
+    return () => window.removeEventListener("page-covered", finish);
+  }, []);
+
+  // Over the black footer the bare logo and toggle turn white.
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;

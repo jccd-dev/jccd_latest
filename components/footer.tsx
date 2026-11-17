@@ -15,7 +15,7 @@ const iconLinkClass =
   "inline-flex size-11 items-center justify-center rounded-xs outline-none transition-opacity hover:opacity-60 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 motion-reduce:transition-none";
 
 const siteLinks = [
-  { href: "/#projects", label: "Work" },
+  { href: "/work", label: "Work" },
   { href: "/#about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

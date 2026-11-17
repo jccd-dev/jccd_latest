@@ -297,7 +297,7 @@ export function ProjectDetails({ project }: { project: Project }) {
   }
 
   return (
-    <article className="min-h-dvh bg-background text-foreground">
+    <article className="min-h-dvh">
       <div className="page-container pb-20 pt-24 md:pt-28">
         <Link
           href="/#projects"
@@ -314,7 +314,7 @@ export function ProjectDetails({ project }: { project: Project }) {
               alt={primaryScreenshot.alt}
               fill
               priority
-              sizes="(min-width: 1200px) 1152px, calc(100vw - 2rem)"
+              sizes="(min-width: 1440px) 1392px, calc(100vw - 2rem)"
               className="object-cover"
             />
           </figure>

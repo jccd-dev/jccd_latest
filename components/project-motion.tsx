@@ -53,24 +53,18 @@ export function Reveal({
 export function TextReveal({
   as: Tag = "p",
   text,
-  highlight,
   load = false,
   className,
   children,
 }: {
   as?: ElementType;
   text: string;
-  highlight?: string;
   load?: boolean;
   className?: string;
   children?: ReactNode;
 }) {
   const target = useRef<HTMLElement>(null);
   const words = text.split(" ");
-  const highlightAt = highlight ? text.indexOf(highlight) : -1;
-  const firstHighlighted =
-    highlightAt < 0 ? -1 : text.slice(0, highlightAt).split(" ").length - 1;
-  const highlightLength = highlight ? highlight.split(" ").length : 0;
 
   useEffect(() => {
     if (load) return;
@@ -96,13 +90,7 @@ export function TextReveal({
         <Fragment key={index}>
           <span className="word-mask">
             <span
-              className={
-                firstHighlighted >= 0 &&
-                index >= firstHighlighted &&
-                index < firstHighlighted + highlightLength
-                  ? "word text-highlight"
-                  : "word"
-              }
+              className="word"
               style={{ "--i": index } as CSSProperties}
             >
               {word}

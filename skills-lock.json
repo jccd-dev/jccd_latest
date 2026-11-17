@@ -1,160 +1,161 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "agent-email-inbox": {
       "source": "resend/resend-skills",
       "sourceType": "github",
       "skillPath": "skills/agent-email-inbox/SKILL.md",
-      "computedHash": "65ed829de5d962d032c4d0aa96c8557bc48b79e5ba00ee13eb29b3bc881623d2"
+      "computedHash": "dedf4e20eee2bdd625adc2cb32f7477ce73b074d031aa352632cee061f628276"
     },
     "animate": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/animate/SKILL.md",
-      "computedHash": "609e30351bf518b21a8cfe87cd1111554855527075d6563605bafe61963252f7"
+      "computedHash": "bfde0abcfed2a276df349e285c985b04d908a4e546cf7ad575ea64d31da40dca"
     },
     "animate-expo": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/animate-expo/SKILL.md",
-      "computedHash": "c9eaf6603b97ca61b05c7561e1045b2f58b6d84cdf8d67565bff23a9ff94ce8a"
+      "computedHash": "c06aa66638cf05bf74930096d54ff25e2a31dea3341403e692acfcfacb1108a0"
     },
     "animation-vocabulary": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/animation-vocabulary/SKILL.md",
-      "computedHash": "39319fc9a33c15be08666b3685f58666f042ff36bb902b7814c0834a5ba99df4"
+      "computedHash": "9c7f01918f4bacf2378c8644155f3cfc875244afba6047feac7e1bda8b65eefd"
     },
     "anti-ui-slop": {
       "source": "uizze.com",
       "sourceUrl": "https://uizze.com/",
       "sourceType": "well-known",
-      "computedHash": "cdb9293f9d8461b525a42949d5f3509754c42efa2eab11f20d406b16270eb867",
+      "computedHash": "4593251485b960347511b6ac12bbdd8114fc17e723d1c226cca1b6284926a58c",
       "wellKnownDigest": "sha256:c3dc1a035894db5e60d3cde5e06147c660220f1cffacf8b7469b80f12309bc08"
     },
     "apple-design": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/apple-design/SKILL.md",
-      "computedHash": "8b94db67cb9edaad5f1501010804caa610131f1d2dfda0a27664b2e858deade3"
+      "computedHash": "4752d2d4207173cf812960e8c1308103aab1786a4919e571d6722653f56b9696"
     },
     "ask-sonner": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/ask-sonner/SKILL.md",
-      "computedHash": "23f724e97247b2003ccc479f3a9b3af8e4191a0e133b94ee6b73f8405349687f"
+      "computedHash": "ac3576ffcc547ec05e99a7602035ef919d0ab8c2ccae4cdb0fa5541031d8435d"
     },
     "email-best-practices": {
       "source": "resend/resend-skills",
       "sourceType": "github",
       "skillPath": "skills/email-best-practices/SKILL.md",
-      "computedHash": "c7218333381fa335b8a912bd55b3bb58b5b567a174f9e1d8b41940ff82f1a6b6"
+      "computedHash": "ea80a86ebacab5893b71aa4b2f477f05546b5e5379c42d0d13f83d27c161a2f7"
     },
     "emil-design-eng": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/emil-design-eng/SKILL.md",
-      "computedHash": "41b0a4dc1a27164fe297845a6c6850a39e9242c42c9be999967fcee9df2c5974"
+      "computedHash": "d80dbb053bf35f3ef9f3ffe493054b76d93f4ae5e2c85a97ee1222677471a622"
     },
     "find-animation-opportunities": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/find-animation-opportunities/SKILL.md",
-      "computedHash": "8fb8492eb8fbed1313cb430b5831d925d9b8964ca24f3c41a6244cbd1fd98732"
+      "computedHash": "e62e151525e9269ab118aeeff57cc121aa2923091ff75a85c523a35a01fad20c"
     },
     "gsap-core": {
       "source": "greensock/gsap-skills",
       "sourceType": "github",
-      "computedHash": "b891c9ed42d9319685250231085ebe21538f2c844613b277b9dd2b3ff529a542"
+      "skillPath": "skills/gsap-core/SKILL.md",
+      "computedHash": "dfc8ba849fa8b81c8cc60964ee2a5fa8db4b2a2611801cf549a5b267b8284fa5"
     },
     "humanize-writing": {
       "source": "jpeggdev/humanize-writing",
       "sourceType": "github",
       "skillPath": "SKILL.md",
-      "computedHash": "664d5d3470ba6113825613afb1212d1705af7d86d5ed0b438e6961f77fb9e3bb"
+      "computedHash": "53a7e80438d56d64e2e1c42d6a4a9fd274aed21244d1b7380a974d1897317686"
     },
     "improve-animations": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/improve-animations/SKILL.md",
-      "computedHash": "eeb219a407e325b687af88db25771cc3018e3148245604112f5ac6990b6fd79c"
+      "computedHash": "d1fd903616de3877eb28102be78a19f0585f09e073d719dae2485960317e8c87"
     },
     "interactive-portfolio": {
       "source": "sickn33/antigravity-awesome-skills",
       "sourceType": "github",
-      "computedHash": "216425756047fb5bb34d32ccafd973576d248f8290182d775eeff33f8c224397"
+      "computedHash": ""
     },
     "nextjs-best-practices": {
       "source": "sickn33/antigravity-awesome-skills",
       "sourceType": "github",
-      "computedHash": "f57b0625e5e9e64dc9f3d7333c81e73f445fd9c65fe7cd0fd99a779a2e78dffd"
+      "computedHash": ""
     },
     "pick-ui-library": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/pick-ui-library/SKILL.md",
-      "computedHash": "f8d4d2cf4677bf54b14f35f62a741add93541bfcb67863315a40164365161b49"
+      "computedHash": "cbfae520514ad32123b55dc8e7fd28ab909ee1ace522744b4e4d447238e04cd9"
     },
     "prototype": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/prototype/SKILL.md",
-      "computedHash": "f246d1f47566481d9207e1aa574bdee5454257d862919a6591283e9af2f57eab"
+      "computedHash": "77681eb9f09521896cf4246247857fd28a8fabdb89de7f865d281e05ba299196"
     },
     "react-email": {
       "source": "resend/resend-skills",
       "sourceType": "github",
       "skillPath": "skills/react-email/SKILL.md",
-      "computedHash": "ff40e3355c318e5ef203eb1118cab574454ce65dae01bb268b05a2e244b8041b"
+      "computedHash": "067ef44587c07575850f4e1795fc2f938f99b73615b9f537b93febd0b447f15b"
     },
     "resend": {
       "source": "resend/resend-skills",
       "sourceType": "github",
       "skillPath": "skills/resend/SKILL.md",
-      "computedHash": "7a51e5808711f4c099b1170939ea216520ae18d7a1fa60cb9349c6c345799cb3"
+      "computedHash": "bb4b1f0ca377880ade4f789c495689c2996da2a6edf739f76f1b1d2eec4b5e19"
     },
     "resend-cli": {
       "source": "resend/resend-skills",
       "sourceType": "github",
       "skillPath": "skills/resend-cli/SKILL.md",
-      "computedHash": "f092422073720c7d3af73a6c87ef02371e0f789b5b7b20528fa9fc3cf85ed2a1"
+      "computedHash": "7eb7da52ebd5d8f27171c56ceb8d24aed830a9ec90e5d1f22514a1ca8be4bdaf"
     },
     "review-animations": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/review-animations/SKILL.md",
-      "computedHash": "b9f669af5ae280c19a592a94611520335a81de25c88f225bf60ae4b2d66c8c7c"
+      "computedHash": "afcbbacb346bc1ac4e0098ed90cfe53df4b95abcde752fb4865adc815b6c0636"
     },
     "tailwind-css-patterns": {
       "source": "giuseppe-trisciuoglio/developer-kit",
       "sourceType": "github",
       "skillPath": "plugins/developer-kit-typescript/skills/tailwind-css-patterns/SKILL.md",
-      "computedHash": "6092620c3af955a46ea2b94ca8a40197ac8392e6bbdc8c7515659328b186c770"
+      "computedHash": "9f84955f461d236a7ec7adf52934ce8389406f2d28e63b7e25bd2d134d5e50d2"
     },
     "tailwindcss-advanced-layouts": {
       "source": "josiahsiegel/claude-plugin-marketplace",
       "sourceType": "github",
-      "computedHash": "bf3eb96bcdcceb54cf2c0ba01daa18275c169627f37f5a861490c78e8055a5ce"
+      "computedHash": ""
     },
     "ui-design": {
       "source": "uizze.com",
       "sourceUrl": "https://uizze.com/",
       "sourceType": "well-known",
-      "computedHash": "fe14d1158abb50fdece6abe03ade1d8d6d5b2ef8b7f6914d65193a30a3d48712",
+      "computedHash": "f3e1ab4bcb62e8673e74f9f307774e89f51a601a1e95d19d9d84a5fac419a81f",
       "wellKnownDigest": "sha256:31db513e7c2d956be22792661e840c44cee474f220d2cce885fa93333a0e8bae"
     },
     "ui-radar": {
       "source": "uizze.com",
       "sourceUrl": "https://uizze.com/",
       "sourceType": "well-known",
-      "computedHash": "34305420bba52f3fe7d1d3b2dd355b64ccf12de7411cbbf4557a1231e8ef8ddb",
+      "computedHash": "ca4f552380e42b0bc8c2ce29b2691df452bc912e64b5203c6b97d24a054c36a0",
       "wellKnownDigest": "sha256:461cf4d25b9e74840cb6f20ab81751ec5352dbcb28dac8e3bce001602965279e"
     },
     "write-swift": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
       "skillPath": "skills/write-swift/SKILL.md",
-      "computedHash": "ccbb74cac81765fcf2912ceba8d188fddbd75393ecb808aa1a4f6f58d9c2c828"
+      "computedHash": "3f73dcb8946e73c22bdc1fdcbaed2799ef82af88dc34f09807cd71629dec93fa"
     }
   }
 }

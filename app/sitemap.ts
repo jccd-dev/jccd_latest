@@ -7,6 +7,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "/",
+    "/work",
     "/contact",
     ...projects.map((project) => `/projects/${project.slug}`),
   ];

@@ -102,7 +102,7 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 
 ## 6. Layout Principles
 
-- Main content uses the `page-container` utility: centered, `1rem` mobile gutters, `1.5rem` gutters from `768px`, maximum width `1200px`.
+- Main content uses the `page-container` utility: centered, `1rem` mobile gutters, `1.5rem` gutters from `768px`, maximum width `1440px`.
 - Prefer CSS Grid for multi-column composition.
 - At `768px` and below, every multi-column section collapses to one column with no horizontal overflow.
 - Use `min-height: 100dvh` for viewport-height sections. Never use `100vh` or `h-screen`.
@@ -113,7 +113,7 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 - Do not add decorative crosshairs, fake dashboards, empty bento cells, or section-number labels.
 - Page order is Hero, Selected work, About, Footer.
 - The footer closes on the full-width `JCCDLABS` wordmark (outlines in `components/wordmark-letters.ts`, from `public/JCCDLABS.svg`). Each letter climbs out of the page edge over the last stretch of scroll. Above it sit `Say Hello.`, the contact action, and the Index, Elsewhere, and Local time columns.
-- Selected work gives every project its own bento, so the list can grow by adding projects. Each one has a `Name. Tagline` heading with tech tags, a `7/5` row (cover tile in `tileColor`, then description, role, audience, and `Learn more`), and a row of four feature tiles from the project's first four features. Each group opens with a slim intro band.
+- Selected work on the landing page stacks the client projects as full-width cards (`ProjectCard` with `featured`): cover in `tileColor`, then title, tagline, and tech tags, with status and type in a ruled column on the right. `View all work` leads to `/work`, a two-column grid of every project with All, Client work, and Personal filters.
 
 ## 7. Hero
 
@@ -210,7 +210,7 @@ Use a compact, mostly sharp radius system based on the existing `0.625rem` token
 - Hero images are prioritized or preloaded. Below-fold media is lazy-loaded.
 - Target LCP below `2.5s`, INP below `200ms`, and CLS below `0.1`.
 - Keep heavy animation libraries out of static sections.
-- Noise or grain, if ever approved, belongs on one fixed pointer-events-none pseudo-element, never a scrolling container.
+- Film grain is approved site-wide: one fixed, pointer-events-none `body::before` behind the content at `0.16` opacity (`app/globals.css`). Never put grain on a scrolling container.
 
 ## 14. Banned Patterns
 
